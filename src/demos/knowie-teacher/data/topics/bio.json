@@ -1,0 +1,20 @@
+{
+  "id": "bio",
+  "title": "Bio 101: Why you exist",
+  "subtitle": "and why your dad picked your gender",
+  "eyebrow": "🧬 BIO 101",
+  "emoji": "🧬",
+  "scriptText": "Alright. Apparently we need to explain how boys and girls are made. Buckle up. Every human has twenty-three pairs of chromosomes. Wow. Math. I know. ONE pair decides if you're male or female. One. Pair. Girls have two X chromosomes. X-X. Easy. Boys have one X and one Y. X-Y. Genius. The mom always gives an X. She literally has no other option. Which means the DAD decides the gender. Yeah. Tell your mom she's been blaming the wrong person all these years. So that's it. That's the whole thing. And you didn't know this. Ha ha ha. Imagine.",
+  "beats": [
+    { "text": "Apparently we need to explain how boys and girls are made.", "hint": "opener" },
+    { "text": "Every human has 23 pairs of chromosomes.", "hint": "setup", "highlight": "23 pairs" },
+    { "text": "Wow. Math. I know.", "hint": "flex" },
+    { "text": "ONE pair decides if you're male or female.", "hint": "reveal", "highlight": "ONE pair" },
+    { "text": "Girls have two X chromosomes. XX.", "hint": "setup", "highlight": "XX" },
+    { "text": "Boys have one X and one Y. XY. Genius.", "hint": "setup", "highlight": "XY" },
+    { "text": "Mom can only give an X. She has no other option.", "hint": "setup" },
+    { "text": "Which means DAD decides the gender.", "hint": "reveal", "highlight": "DAD" },
+    { "text": "Tell your mom she's been blaming the wrong person.", "hint": "punchline" },
+    { "text": "And you didn't know this. Hahahaha. Imagine.", "hint": "closer" }
+  ]
+}

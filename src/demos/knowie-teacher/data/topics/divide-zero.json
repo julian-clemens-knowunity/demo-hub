@@ -1,0 +1,20 @@
+{
+  "id": "divide-zero",
+  "title": "Why you can't divide by zero",
+  "subtitle": "the question every 2nd grader asks",
+  "eyebrow": "➗ MATH",
+  "emoji": "➗",
+  "scriptText": "So you don't understand why you can't divide by zero. Classic. Every kid asks this. Few get an answer. One divided by zero. Is it infinity? Zero? Wrong. It's UNDEFINED. Here's why. Say one divided by zero equals X. Then X times zero must equal one. But anything times zero is zero. So X times zero equals zero. Not one. Contradiction. Math breaks. The universe dies. So we just say: forbidden. Don't do it. You've been asking this since you were seven. Now you finally know. You're welcome.",
+  "beats": [
+    { "text": "You don't understand divide by zero?", "hint": "opener" },
+    { "text": "Every kid asks. Few get an answer.", "hint": "setup" },
+    { "text": "Is it infinity? Is it zero?", "hint": "curious" },
+    { "text": "Wrong. It's UNDEFINED.", "hint": "reveal", "highlight": "UNDEFINED" },
+    { "text": "Say 1 ÷ 0 = X.", "hint": "setup", "highlight": "X" },
+    { "text": "Then X × 0 must equal 1.", "hint": "setup" },
+    { "text": "But anything × 0 = 0. Not 1.", "hint": "reveal" },
+    { "text": "Contradiction. Math breaks.", "hint": "punchline" },
+    { "text": "Forbidden. Don't do it.", "hint": "flex" },
+    { "text": "You've been asking since you were 7. Now you know.", "hint": "closer" }
+  ]
+}

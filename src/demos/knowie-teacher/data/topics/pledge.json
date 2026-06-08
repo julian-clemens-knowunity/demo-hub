@@ -1,0 +1,20 @@
+{
+  "id": "pledge",
+  "title": "The Pledge of Allegiance is an ad",
+  "subtitle": "your patriotic ritual: invented to sell flags",
+  "eyebrow": "🇺🇸 US HISTORY",
+  "emoji": "🇺🇸",
+  "scriptText": "Bro. You say the Pledge of Allegiance every morning. And you don't know who wrote it. Of course you don't. It was written in 1892. Not by Washington. Not by Jefferson. By a guy named Francis Bellamy. Who worked at a MAGAZINE. The magazine was called The Youth's Companion. They sold flags. To schools. Bellamy wrote the Pledge as a MARKETING CAMPAIGN. To sell more flags. That's it. Schools needed flags to do the Pledge. The magazine sells more flags. Profit. Your daily patriotic ritual is literally an advertisement. From 1892. And no one noticed for 130 years. You're welcome.",
+  "beats": [
+    { "text": "You say the Pledge of Allegiance every morning.", "hint": "opener" },
+    { "text": "And you don't know who wrote it.", "hint": "setup" },
+    { "text": "Written in 1892.", "hint": "reveal", "highlight": "1892" },
+    { "text": "Not Washington. Not Jefferson.", "hint": "setup" },
+    { "text": "By a guy named Francis Bellamy.", "hint": "setup", "highlight": "Francis Bellamy" },
+    { "text": "Who worked at a MAGAZINE.", "hint": "reveal", "highlight": "MAGAZINE" },
+    { "text": "Called The Youth's Companion.", "hint": "setup" },
+    { "text": "They sold flags. To schools.", "hint": "setup", "highlight": "sold flags" },
+    { "text": "Bellamy wrote the Pledge to sell more flags.", "hint": "punchline" },
+    { "text": "Your daily ritual is literally an ad. From 1892.", "hint": "closer" }
+  ]
+}
