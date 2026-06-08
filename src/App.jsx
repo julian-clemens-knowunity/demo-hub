@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { DEMOS } from './demos.config';
 
 function DemoGallery({ onSelectDemo }) {
   return (
-    <SafeAreaView style={styles.galleryRoot} edges={['top', 'bottom']}>
+    <View style={styles.galleryRoot}>
       <View style={styles.header}>
         <Text style={styles.title}>Demo Hub</Text>
         <Text style={styles.subtitle}>Tap a demo to launch</Text>
@@ -27,7 +26,7 @@ function DemoGallery({ onSelectDemo }) {
           </Pressable>
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
