@@ -2,16 +2,21 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-const shimPath = path.resolve(__dirname, './src/react-native-shim.js')
+const safeAreaShim = path.resolve(__dirname, './src/safe-area-shim.jsx')
+const codegenShim = path.resolve(__dirname, './src/react-native-shim.js')
 
 export default defineConfig({
   plugins: [
     react(),
     {
-      name: 'react-native-shim',
+      name: 'react-native-shims',
+      enforce: 'pre',
       resolveId(id) {
+        if (id === 'react-native-safe-area-context') {
+          return safeAreaShim
+        }
         if (id.includes('codegenNativeComponent')) {
-          return shimPath
+          return codegenShim
         }
       },
     },
@@ -20,8 +25,5 @@ export default defineConfig({
     alias: {
       'react-native': 'react-native-web',
     },
-  },
-  optimizeDeps: {
-    exclude: ['react-native-safe-area-context'],
   },
 })
