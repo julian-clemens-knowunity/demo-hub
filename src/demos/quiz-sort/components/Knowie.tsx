@@ -88,19 +88,19 @@ export default function Knowie({ face, size = 180 }: Props) {
         toValue: 0,
         duration: FADE_MS,
         easing: Easing.in(Easing.quad),
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.timing(nextOpacity, {
         toValue: 1,
         duration: FADE_MS,
         easing: Easing.out(Easing.quad),
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.spring(nextScale, {
         toValue: 1,
         friction: 5,
         tension: 140,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.timing(tintAnim, {
         toValue: 1,
@@ -116,43 +116,43 @@ export default function Knowie({ face, size = 180 }: Props) {
       // Big celebratory triple-bounce + scale pop
       Animated.sequence([
         Animated.delay(80),
-        Animated.timing(bounce, { toValue: -36, duration: 180, easing: Easing.out(Easing.quad), useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: 0, duration: 200, easing: Easing.in(Easing.quad), useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: -22, duration: 140, easing: Easing.out(Easing.quad), useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: 0, duration: 180, easing: Easing.in(Easing.quad), useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: -10, duration: 120, useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: 0, duration: 160, easing: Easing.bounce, useNativeDriver: true }),
+        Animated.timing(bounce, { toValue: -36, duration: 180, easing: Easing.out(Easing.quad), useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: 0, duration: 200, easing: Easing.in(Easing.quad), useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: -22, duration: 140, easing: Easing.out(Easing.quad), useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: 0, duration: 180, easing: Easing.in(Easing.quad), useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: -10, duration: 120, useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: 0, duration: 160, easing: Easing.bounce, useNativeDriver: false }),
       ]).start();
       Animated.sequence([
         Animated.delay(60),
-        Animated.spring(popScale, { toValue: 1.25, friction: 4, tension: 200, useNativeDriver: true }),
-        Animated.spring(popScale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: true }),
+        Animated.spring(popScale, { toValue: 1.25, friction: 4, tension: 200, useNativeDriver: false }),
+        Animated.spring(popScale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: false }),
       ]).start();
       Animated.sequence([
         Animated.delay(80),
-        Animated.timing(rotate, { toValue: 0.6, duration: 120, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: -0.6, duration: 120, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: 0.4, duration: 120, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: 0, duration: 120, useNativeDriver: true }),
+        Animated.timing(rotate, { toValue: 0.6, duration: 120, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: -0.6, duration: 120, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: 0.4, duration: 120, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: 0, duration: 120, useNativeDriver: false }),
       ]).start();
     } else if (face === 'approving') {
       Animated.sequence([
         Animated.delay(80),
-        Animated.timing(bounce, { toValue: -18, duration: 180, easing: Easing.out(Easing.quad), useNativeDriver: true }),
-        Animated.timing(bounce, { toValue: 0, duration: 220, easing: Easing.bounce, useNativeDriver: true }),
+        Animated.timing(bounce, { toValue: -18, duration: 180, easing: Easing.out(Easing.quad), useNativeDriver: false }),
+        Animated.timing(bounce, { toValue: 0, duration: 220, easing: Easing.bounce, useNativeDriver: false }),
       ]).start();
     } else if (face === 'amazed') {
       // Recoil-back then forward jitter
       Animated.sequence([
         Animated.delay(60),
-        Animated.timing(bounce, { toValue: -14, duration: 100, useNativeDriver: true }),
+        Animated.timing(bounce, { toValue: -14, duration: 100, useNativeDriver: false }),
         Animated.parallel([
-          Animated.timing(bounce, { toValue: 0, duration: 240, easing: Easing.bounce, useNativeDriver: true }),
+          Animated.timing(bounce, { toValue: 0, duration: 240, easing: Easing.bounce, useNativeDriver: false }),
           Animated.sequence([
-            Animated.timing(rotate, { toValue: 1, duration: 50, useNativeDriver: true }),
-            Animated.timing(rotate, { toValue: -1, duration: 50, useNativeDriver: true }),
-            Animated.timing(rotate, { toValue: 1, duration: 50, useNativeDriver: true }),
-            Animated.timing(rotate, { toValue: 0, duration: 50, useNativeDriver: true }),
+            Animated.timing(rotate, { toValue: 1, duration: 50, useNativeDriver: false }),
+            Animated.timing(rotate, { toValue: -1, duration: 50, useNativeDriver: false }),
+            Animated.timing(rotate, { toValue: 1, duration: 50, useNativeDriver: false }),
+            Animated.timing(rotate, { toValue: 0, duration: 50, useNativeDriver: false }),
           ]),
         ]),
       ]).start();
@@ -160,28 +160,28 @@ export default function Knowie({ face, size = 180 }: Props) {
       // Violent fast shake
       Animated.sequence([
         Animated.delay(60),
-        Animated.timing(rotate, { toValue: 1.2, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: -1.2, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: 1.2, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: -1.2, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: 1, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: -1, duration: 40, useNativeDriver: true }),
-        Animated.timing(rotate, { toValue: 0, duration: 40, useNativeDriver: true }),
+        Animated.timing(rotate, { toValue: 1.2, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: -1.2, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: 1.2, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: -1.2, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: 1, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: -1, duration: 40, useNativeDriver: false }),
+        Animated.timing(rotate, { toValue: 0, duration: 40, useNativeDriver: false }),
       ]).start();
     } else if (face === 'dazed') {
       // Heavy slow droop with sideways wobble
       Animated.parallel([
         Animated.sequence([
-          Animated.timing(bounce, { toValue: -8, duration: 100, useNativeDriver: true }),
-          Animated.timing(bounce, { toValue: 18, duration: 600, easing: Easing.bounce, useNativeDriver: true }),
+          Animated.timing(bounce, { toValue: -8, duration: 100, useNativeDriver: false }),
+          Animated.timing(bounce, { toValue: 18, duration: 600, easing: Easing.bounce, useNativeDriver: false }),
         ]),
-        Animated.timing(rotate, { toValue: 0.5, duration: 700, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+        Animated.timing(rotate, { toValue: 0.5, duration: 700, easing: Easing.inOut(Easing.sin), useNativeDriver: false }),
       ]).start();
     } else if (face === 'overIt') {
       Animated.loop(
         Animated.sequence([
-          Animated.timing(rotate, { toValue: 0.4, duration: 1200, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-          Animated.timing(rotate, { toValue: -0.4, duration: 1200, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+          Animated.timing(rotate, { toValue: 0.4, duration: 1200, easing: Easing.inOut(Easing.sin), useNativeDriver: false }),
+          Animated.timing(rotate, { toValue: -0.4, duration: 1200, easing: Easing.inOut(Easing.sin), useNativeDriver: false }),
         ])
       ).start();
     }

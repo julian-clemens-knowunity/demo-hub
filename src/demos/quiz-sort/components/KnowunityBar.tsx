@@ -9,10 +9,10 @@ export default function KnowunityBar() {
   const insets = useSafeAreaInsets();
 
   const onPressIn = () => {
-    Animated.spring(scale, { toValue: 0.94, friction: 6, tension: 220, useNativeDriver: true }).start();
+    Animated.spring(scale, { toValue: 0.94, friction: 6, tension: 220, useNativeDriver: false }).start();
   };
   const onPressOut = () => {
-    Animated.spring(scale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: true }).start();
+    Animated.spring(scale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: false }).start();
   };
 
   return (

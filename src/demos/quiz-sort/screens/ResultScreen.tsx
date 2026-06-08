@@ -18,20 +18,20 @@ export default function ResultScreen({ score, total, onReplay }: Props) {
   useEffect(() => {
     Animated.sequence([
       Animated.parallel([
-        Animated.spring(cardScale, { toValue: 1, friction: 6, tension: 110, useNativeDriver: true }),
-        Animated.timing(cardOpacity, { toValue: 1, duration: 320, useNativeDriver: true }),
+        Animated.spring(cardScale, { toValue: 1, friction: 6, tension: 110, useNativeDriver: false }),
+        Animated.timing(cardOpacity, { toValue: 1, duration: 320, useNativeDriver: false }),
       ]),
       Animated.delay(220),
       Animated.parallel([
-        Animated.timing(flash, { toValue: 1, duration: 80, useNativeDriver: true }),
-        Animated.spring(stampScale, { toValue: 1, friction: 4, tension: 200, useNativeDriver: true }),
-        Animated.timing(stampRot, { toValue: 1, duration: 320, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(flash, { toValue: 1, duration: 80, useNativeDriver: false }),
+        Animated.spring(stampScale, { toValue: 1, friction: 4, tension: 200, useNativeDriver: false }),
+        Animated.timing(stampRot, { toValue: 1, duration: 320, easing: Easing.out(Easing.cubic), useNativeDriver: false }),
       ]),
-      Animated.timing(flash, { toValue: 0, duration: 360, useNativeDriver: true }),
+      Animated.timing(flash, { toValue: 0, duration: 360, useNativeDriver: false }),
       Animated.delay(220),
-      Animated.timing(subOpacity, { toValue: 1, duration: 360, useNativeDriver: true }),
+      Animated.timing(subOpacity, { toValue: 1, duration: 360, useNativeDriver: false }),
       Animated.delay(360),
-      Animated.timing(replayOpacity, { toValue: 1, duration: 320, useNativeDriver: true }),
+      Animated.timing(replayOpacity, { toValue: 1, duration: 320, useNativeDriver: false }),
     ]).start();
   }, []);
 

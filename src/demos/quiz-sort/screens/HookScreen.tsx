@@ -24,27 +24,27 @@ export default function HookScreen({ onStart }: Props) {
     Animated.sequence([
       Animated.delay(220),
       Animated.parallel([
-        Animated.timing(line1Opacity, { toValue: 1, duration: 260, useNativeDriver: true }),
-        Animated.spring(line1Scale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: true }),
+        Animated.timing(line1Opacity, { toValue: 1, duration: 260, useNativeDriver: false }),
+        Animated.spring(line1Scale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: false }),
       ]),
       Animated.delay(900),
       Animated.parallel([
-        Animated.timing(line2Opacity, { toValue: 1, duration: 320, useNativeDriver: true }),
-        Animated.timing(line2Y, { toValue: 0, duration: 320, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+        Animated.timing(line2Opacity, { toValue: 1, duration: 320, useNativeDriver: false }),
+        Animated.timing(line2Y, { toValue: 0, duration: 320, easing: Easing.out(Easing.cubic), useNativeDriver: false }),
       ]),
       Animated.delay(520),
       Animated.parallel([
-        Animated.timing(cueOpacity, { toValue: 1, duration: 280, useNativeDriver: true }),
-        Animated.timing(knowieOpacity, { toValue: 1, duration: 280, useNativeDriver: true }),
-        Animated.spring(knowieY, { toValue: 0, friction: 6, tension: 90, useNativeDriver: true }),
+        Animated.timing(cueOpacity, { toValue: 1, duration: 280, useNativeDriver: false }),
+        Animated.timing(knowieOpacity, { toValue: 1, duration: 280, useNativeDriver: false }),
+        Animated.spring(knowieY, { toValue: 0, friction: 6, tension: 90, useNativeDriver: false }),
       ]),
     ]).start();
 
     // Idle pulse on the tap cue once it's visible
     const pulse = Animated.loop(
       Animated.sequence([
-        Animated.timing(tapPulse, { toValue: 1.08, duration: 720, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
-        Animated.timing(tapPulse, { toValue: 1, duration: 720, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+        Animated.timing(tapPulse, { toValue: 1.08, duration: 720, easing: Easing.inOut(Easing.sin), useNativeDriver: false }),
+        Animated.timing(tapPulse, { toValue: 1, duration: 720, easing: Easing.inOut(Easing.sin), useNativeDriver: false }),
       ])
     );
     const t = setTimeout(() => pulse.start(), 2400);

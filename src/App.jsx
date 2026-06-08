@@ -4,15 +4,16 @@ import { DEMOS } from './demos.config';
 
 function DemoGallery({ onSelectDemo }) {
   return (
-    <View style={styles.galleryRoot}>
+    <ScrollView
+      style={styles.galleryRoot}
+      contentContainerStyle={styles.galleryContent}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.header}>
         <Text style={styles.title}>Demo Hub</Text>
         <Text style={styles.subtitle}>Tap a demo to launch</Text>
       </View>
-      <ScrollView
-        contentContainerStyle={styles.grid}
-        showsVerticalScrollIndicator={false}
-      >
+      <View style={styles.grid}>
         {DEMOS.map((demo) => (
           <Pressable
             key={demo.id}
@@ -25,8 +26,8 @@ function DemoGallery({ onSelectDemo }) {
             <Text style={styles.demoCardText}>{demo.name}</Text>
           </Pressable>
         ))}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -67,25 +68,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0a0a0a',
   },
+  galleryContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    paddingVertical: 40,
+  },
   header: {
     paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingBottom: 40,
     alignItems: 'center',
   },
   title: {
     color: '#ffffff',
-    fontSize: 32,
+    fontSize: 40,
     fontWeight: '800',
     marginBottom: 8,
+    letterSpacing: -1,
   },
   subtitle: {
     color: '#888888',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '500',
   },
   grid: {
-    paddingHorizontal: 16,
-    paddingBottom: 24,
+    paddingHorizontal: 20,
     gap: 12,
   },
   demoCard: {
