@@ -11,13 +11,13 @@ type Props = { onStart: () => void };
 //   beat 2  → "here's why" appears under it
 //   beat 3  → "tap to find out" pill + Knowie peeks in overIt
 export default function HookScreen({ onStart }: Props) {
-  const line1Opacity = useRef(new Animated.Value(0)).current;
-  const line1Scale = useRef(new Animated.Value(0.88)).current;
-  const line2Opacity = useRef(new Animated.Value(0)).current;
-  const line2Y = useRef(new Animated.Value(12)).current;
-  const cueOpacity = useRef(new Animated.Value(0)).current;
-  const knowieY = useRef(new Animated.Value(60)).current;
-  const knowieOpacity = useRef(new Animated.Value(0)).current;
+  const line1Opacity = useRef(new Animated.Value(1)).current;
+  const line1Scale = useRef(new Animated.Value(1)).current;
+  const line2Opacity = useRef(new Animated.Value(1)).current;
+  const line2Y = useRef(new Animated.Value(0)).current;
+  const cueOpacity = useRef(new Animated.Value(1)).current;
+  const knowieY = useRef(new Animated.Value(0)).current;
+  const knowieOpacity = useRef(new Animated.Value(1)).current;
   const tapPulse = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {

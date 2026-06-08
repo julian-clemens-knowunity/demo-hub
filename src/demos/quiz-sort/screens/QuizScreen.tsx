@@ -29,26 +29,11 @@ export default function QuizScreen({ onComplete }: Props) {
   const quip = QUIPS[idx] ?? QUIPS[QUIPS.length - 1];
 
   const advance = () => {
-    Animated.timing(fade, {
-      toValue: 0,
-      duration: 240,
-      easing: Easing.in(Easing.cubic),
-      useNativeDriver: false,
-    }).start(() => {
-      if (idx + 1 >= total) {
-        // SortBoard only accepts correct drops, so they "pass" every time.
-        onComplete(total, total);
-        return;
-      }
-      setIdx(idx + 1);
-      fade.setValue(0);
-      Animated.timing(fade, {
-        toValue: 1,
-        duration: 280,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: false,
-      }).start();
-    });
+    if (idx + 1 >= total) {
+      onComplete(total, total);
+      return;
+    }
+    setIdx(idx + 1);
   };
 
   // Progress dots row (one per question)
