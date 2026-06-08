@@ -1,12 +1,12 @@
 // Register your demos here
 // Format: { id: 'unique-id', name: 'Display Name', component: YourComponent }
 
-import KnowieTeacher from './demos/knowie-teacher/KnowieTeacherScreen';
+import HelloDemo from './demos/hello-demo/HelloDemo';
 
 export const DEMOS = [
   {
-    id: 'knowie-teacher',
-    name: 'Knowie Teacher',
-    component: KnowieTeacher,
+    id: 'hello',
+    name: 'Hello Demo',
+    component: HelloDemo,
   },
 ];
