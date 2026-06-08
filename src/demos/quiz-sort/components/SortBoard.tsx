@@ -1,25 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {
-  Animated,
-  LayoutChangeEvent,
-  PanResponder,
-  StyleSheet,
-  Text,
-  Vibration,
-  View,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Animated, Pressable, StyleSheet, Text, View, Vibration } from 'react-native';
 import { KU } from '../theme';
 import { SortBox, SortQuestion, SortTile } from '../data/questions';
 
-type Rect = { x: number; y: number; w: number; h: number };
 type Placement = SortBox | null;
-type RectsRef = { left: Rect | null; right: Rect | null };
-
-const TILE_W = 78;
-const TILE_H = 78;
-const TRAY_GAP = 12;
-const SLOT_GAP = 8;
-const BOX_HEADER_PAD = 52;
 
 type Props = {
   question: SortQuestion;
@@ -29,259 +13,131 @@ type Props = {
 };
 
 export default function SortBoard({ question, onWrongDrop, onCorrectDrop, onAllPlaced }: Props) {
-  const [boardW, setBoardW] = useState(0);
-  const [trayY, setTrayY] = useState(0);
-  const [leftRect, setLeftRect] = useState<Rect | null>(null);
-  const [rightRect, setRightRect] = useState<Rect | null>(null);
   const [placements, setPlacements] = useState<Record<string, Placement>>(() =>
     Object.fromEntries(question.tiles.map((t) => [t.id, null]))
   );
-
-  // Refs the PanResponder handlers can read live.
-  const rectsRef = useRef<RectsRef>({ left: null, right: null });
-  rectsRef.current = { left: leftRect, right: rightRect };
-  const placementsRef = useRef(placements);
-  placementsRef.current = placements;
-  const placementOrderRef = useRef<Record<string, number>>({});
-  const placementCounterRef = useRef(0);
-
-  const tilePansRef = useRef<Record<string, Animated.ValueXY>>({});
-  const tileWiggleRef = useRef<Record<string, Animated.Value>>({});
-  question.tiles.forEach((t) => {
-    if (!tilePansRef.current[t.id]) tilePansRef.current[t.id] = new Animated.ValueXY({ x: 0, y: 0 });
-    if (!tileWiggleRef.current[t.id]) tileWiggleRef.current[t.id] = new Animated.Value(0);
-  });
-
-  // Measure boxes/tray relative to the board root after layout.
-  const rootRef = useRef<View>(null);
-  const leftBoxRef = useRef<View>(null);
-  const rightBoxRef = useRef<View>(null);
-  const trayRef = useRef<View>(null);
-
-  const measureAll = () => {
-    if (!rootRef.current) return;
-    const root = rootRef.current as any;
-    if (leftBoxRef.current) {
-      (leftBoxRef.current as any).measureLayout(
-        root,
-        (x: number, y: number, w: number, h: number) => setLeftRect({ x, y, w, h }),
-        () => {}
-      );
-    }
-    if (rightBoxRef.current) {
-      (rightBoxRef.current as any).measureLayout(
-        root,
-        (x: number, y: number, w: number, h: number) => setRightRect({ x, y, w, h }),
-        () => {}
-      );
-    }
-    if (trayRef.current) {
-      (trayRef.current as any).measureLayout(
-        root,
-        (_x: number, y: number) => setTrayY(y),
-        () => {}
-      );
-    }
-  };
-
-  // Home (top-left board-local coords) for a given tile.
-  function homeFor(tileId: string, p = placementsRef.current): { x: number; y: number } {
-    const placement = p[tileId];
-    if (!placement) {
-      const trayTiles = question.tiles.filter((t) => p[t.id] === null).map((t) => t.id);
-      const idx = Math.max(0, trayTiles.indexOf(tileId));
-      const n = trayTiles.length || 1;
-      const totalW = n * TILE_W + Math.max(0, n - 1) * TRAY_GAP;
-      const startX = (boardW - totalW) / 2;
-      return { x: startX + idx * (TILE_W + TRAY_GAP), y: trayY + 18 };
-    }
-    const rect = placement === 'left' ? rectsRef.current.left : rectsRef.current.right;
-    if (!rect) return { x: 0, y: 0 };
-    const placed = question.tiles
-      .filter((t) => p[t.id] === placement)
-      .sort((a, b) => (placementOrderRef.current[a.id] ?? 0) - (placementOrderRef.current[b.id] ?? 0))
-      .map((t) => t.id);
-    const idx = Math.max(0, placed.indexOf(tileId));
-    const col = idx % 2;
-    const row = Math.floor(idx / 2);
-    const gridW = 2 * TILE_W + SLOT_GAP;
-    const innerLeft = rect.x + (rect.w - gridW) / 2;
-    const innerTop = rect.y + BOX_HEADER_PAD;
-    return { x: innerLeft + col * (TILE_W + SLOT_GAP), y: innerTop + row * (TILE_H + SLOT_GAP) };
-  }
-
-  const ready = boardW > 0 && trayY > 0 && !!leftRect && !!rightRect;
-  const firstLayoutRef = useRef(true);
+  const [selectedTile, setSelectedTile] = useState<string | null>(null);
+  const [wrongTile, setWrongTile] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!ready) return;
-    question.tiles.forEach((t) => {
-      const pan = tilePansRef.current[t.id];
-      const { x, y } = homeFor(t.id);
-      if (firstLayoutRef.current) {
-        pan.setValue({ x, y });
-      } else {
-        Animated.spring(pan, {
-          toValue: { x, y },
-          friction: 7,
-          tension: 110,
-          useNativeDriver: false,
-        }).start();
-      }
-    });
-    firstLayoutRef.current = false;
-  }, [ready, placements, boardW, trayY, leftRect, rightRect]);
-
-  useEffect(() => {
-    if (!ready) return;
     const allPlaced = question.tiles.every((t) => placements[t.id] !== null);
     if (allPlaced) {
-      const id = setTimeout(() => onAllPlaced(), 460);
+      const id = setTimeout(() => onAllPlaced(), 500);
       return () => clearTimeout(id);
     }
-  }, [placements, ready]);
+  }, [placements]);
 
-  const runWiggle = (tileId: string) => {
-    const w = tileWiggleRef.current[tileId];
-    w.setValue(0);
-    Animated.sequence([
-      Animated.timing(w, { toValue: 1, duration: 60, useNativeDriver: false }),
-      Animated.timing(w, { toValue: -1, duration: 80, useNativeDriver: false }),
-      Animated.timing(w, { toValue: 1, duration: 80, useNativeDriver: false }),
-      Animated.timing(w, { toValue: 0, duration: 80, useNativeDriver: false }),
-    ]).start();
+  const handleTilePress = (tileId: string) => {
+    if (placements[tileId] !== null) return;
+    setSelectedTile(tileId === selectedTile ? null : tileId);
   };
 
-  const handleDrop = (tile: SortTile, box: SortBox | null) => {
-    if (placementsRef.current[tile.id] !== null) return;
+  const handleBoxPress = (box: SortBox) => {
+    if (!selectedTile) return;
+    const tile = question.tiles.find((t) => t.id === selectedTile);
+    if (!tile) return;
 
-    if (box && box === tile.correct) {
-      placementOrderRef.current[tile.id] = ++placementCounterRef.current;
+    if (box === tile.correct) {
       setPlacements((prev) => ({ ...prev, [tile.id]: box }));
+      setSelectedTile(null);
       onCorrectDrop?.();
-      return;
-    }
-
-    if (box) {
-      Vibration.vibrate(40);
-      runWiggle(tile.id);
+    } else {
+      try {
+        Vibration.vibrate(40);
+      } catch (e) {}
+      setWrongTile(tile.id);
+      setTimeout(() => setWrongTile(null), 400);
       onWrongDrop?.();
     }
-    const home = homeFor(tile.id);
-    Animated.spring(tilePansRef.current[tile.id], {
-      toValue: home,
-      friction: 7,
-      tension: 110,
-      useNativeDriver: false,
-    }).start();
   };
 
+  const tilesByBox = (box: SortBox) =>
+    question.tiles.filter((t) => placements[t.id] === box);
+
+  const trayTiles = question.tiles.filter((t) => placements[t.id] === null);
+
   return (
-    <View
-      ref={rootRef}
-      style={styles.root}
-      onLayout={(e: LayoutChangeEvent) => {
-        setBoardW(e.nativeEvent.layout.width);
-        measureAll();
-      }}
-    >
+    <View style={styles.root}>
       <View style={styles.header}>
         <Text style={styles.prompt}>{question.prompt}</Text>
         {question.hint ? <Text style={styles.hint}>{question.hint}</Text> : null}
       </View>
 
       <View style={styles.boxRow}>
-        <View
-          ref={leftBoxRef}
-          onLayout={measureAll}
-          style={[
+        <Pressable
+          onPress={() => handleBoxPress('left')}
+          style={({ pressed }) => [
             styles.box,
-            { borderColor: question.leftColor + '66', backgroundColor: question.leftColor + '14' },
+            {
+              borderColor: question.leftColor + '66',
+              backgroundColor: question.leftColor + '14',
+            },
+            pressed && selectedTile && { borderColor: question.leftColor },
           ]}
         >
-          <Text style={[styles.boxLabel, { color: question.leftColor }]}>{question.leftLabel}</Text>
-        </View>
-        <View
-          ref={rightBoxRef}
-          onLayout={measureAll}
-          style={[
+          <Text style={[styles.boxLabel, { color: question.leftColor }]}>
+            {question.leftLabel}
+          </Text>
+          <View style={styles.boxTiles}>
+            {tilesByBox('left').map((t) => (
+              <View key={t.id} style={[styles.placedTile, { borderColor: question.leftColor }]}>
+                <Text style={styles.tileText}>{t.label}</Text>
+              </View>
+            ))}
+          </View>
+        </Pressable>
+
+        <Pressable
+          onPress={() => handleBoxPress('right')}
+          style={({ pressed }) => [
             styles.box,
-            { borderColor: question.rightColor + '66', backgroundColor: question.rightColor + '14' },
+            {
+              borderColor: question.rightColor + '66',
+              backgroundColor: question.rightColor + '14',
+            },
+            pressed && selectedTile && { borderColor: question.rightColor },
           ]}
         >
-          <Text style={[styles.boxLabel, { color: question.rightColor }]}>{question.rightLabel}</Text>
-        </View>
+          <Text style={[styles.boxLabel, { color: question.rightColor }]}>
+            {question.rightLabel}
+          </Text>
+          <View style={styles.boxTiles}>
+            {tilesByBox('right').map((t) => (
+              <View key={t.id} style={[styles.placedTile, { borderColor: question.rightColor }]}>
+                <Text style={styles.tileText}>{t.label}</Text>
+              </View>
+            ))}
+          </View>
+        </Pressable>
       </View>
 
-      <View ref={trayRef} onLayout={measureAll} style={styles.tray} />
+      <View style={styles.tray}>
+        {trayTiles.map((tile) => {
+          const isSelected = selectedTile === tile.id;
+          const isWrong = wrongTile === tile.id;
+          return (
+            <Pressable
+              key={tile.id}
+              onPress={() => handleTilePress(tile.id)}
+              style={({ pressed }) => [
+                styles.tile,
+                isSelected && styles.tileSelected,
+                isWrong && styles.tileWrong,
+                pressed && styles.tilePressed,
+              ]}
+            >
+              <Text style={styles.tileText}>{tile.label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
 
-      {ready &&
-        question.tiles.map((tile) => (
-          <DraggableTile
-            key={tile.id}
-            tile={tile}
-            pan={tilePansRef.current[tile.id]}
-            wiggle={tileWiggleRef.current[tile.id]}
-            getRects={() => rectsRef.current}
-            isLocked={() => placementsRef.current[tile.id] !== null}
-            onDrop={(box) => handleDrop(tile, box)}
-          />
-        ))}
+      {selectedTile && (
+        <View style={styles.hintBar}>
+          <Text style={styles.hintBarText}>tap a box ↑</Text>
+        </View>
+      )}
     </View>
-  );
-}
-
-type TileProps = {
-  tile: SortTile;
-  pan: Animated.ValueXY;
-  wiggle: Animated.Value;
-  getRects: () => RectsRef;
-  isLocked: () => boolean;
-  onDrop: (box: SortBox | null) => void;
-};
-
-function DraggableTile({ tile, pan, wiggle, getRects, isLocked, onDrop }: TileProps) {
-  const responder = useRef(
-    PanResponder.create({
-      onStartShouldSetPanResponder: () => !isLocked(),
-      onMoveShouldSetPanResponder: () => !isLocked(),
-      onPanResponderGrant: () => {
-        pan.setOffset({ x: (pan.x as any)._value, y: (pan.y as any)._value });
-        pan.setValue({ x: 0, y: 0 });
-      },
-      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], { useNativeDriver: false }),
-      onPanResponderRelease: () => {
-        pan.flattenOffset();
-        const cx = (pan.x as any)._value + TILE_W / 2;
-        const cy = (pan.y as any)._value + TILE_H / 2;
-        const rects = getRects();
-        const inside = (r: Rect | null) =>
-          !!r && cx >= r.x && cx <= r.x + r.w && cy >= r.y && cy <= r.y + r.h;
-        if (inside(rects.left)) onDrop('left');
-        else if (inside(rects.right)) onDrop('right');
-        else onDrop(null);
-      },
-      onPanResponderTerminate: () => {
-        pan.flattenOffset();
-        onDrop(null);
-      },
-    })
-  ).current;
-
-  const wiggleRot = wiggle.interpolate({ inputRange: [-1, 1], outputRange: ['-14deg', '14deg'] });
-
-  return (
-    <Animated.View
-      {...responder.panHandlers}
-      style={[
-        styles.tile,
-        {
-          transform: [{ translateX: pan.x }, { translateY: pan.y }, { rotate: wiggleRot }],
-        },
-      ]}
-    >
-      <Text style={styles.tileText}>{tile.label}</Text>
-    </Animated.View>
   );
 }
 
@@ -318,42 +174,77 @@ const styles = StyleSheet.create({
   },
   box: {
     flex: 1,
-    borderRadius: KU.r24,
+    borderRadius: 24,
     borderWidth: 2,
     paddingTop: 14,
+    paddingHorizontal: 8,
     alignItems: 'center',
   },
   boxLabel: {
     fontSize: 18,
     fontWeight: '900',
     letterSpacing: 0.6,
+    marginBottom: 12,
+  },
+  boxTiles: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    justifyContent: 'center',
   },
   tray: {
     marginTop: 24,
-    height: TILE_H + 36,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+    justifyContent: 'center',
+    paddingTop: 16,
   },
   tile: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: TILE_W,
-    height: TILE_H,
+    width: 78,
+    height: 78,
     borderRadius: 18,
     backgroundColor: KU.bgElevated,
     borderWidth: 1.5,
     borderColor: 'rgba(255,255,255,0.18)',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.35,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
+  },
+  tileSelected: {
+    borderColor: KU.accentGreen,
+    borderWidth: 3,
+    transform: [{ scale: 1.05 }],
+  },
+  tileWrong: {
+    borderColor: '#FB2C36',
+    borderWidth: 3,
+  },
+  tilePressed: {
+    opacity: 0.8,
+  },
+  placedTile: {
+    width: 60,
+    height: 60,
+    borderRadius: 14,
+    backgroundColor: KU.bgElevated,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tileText: {
     color: KU.textPrimary,
     fontSize: 30,
     fontWeight: '900',
     letterSpacing: -0.8,
+  },
+  hintBar: {
+    marginTop: 16,
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  hintBarText: {
+    color: KU.accentGreen,
+    fontSize: 14,
+    fontWeight: '700',
   },
 });

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { DEMOS } from './demos.config';
+import { ErrorBoundary } from './ErrorBoundary';
 
 function DemoGallery({ onSelectDemo }) {
   return (
@@ -47,7 +48,9 @@ function App() {
         >
           <Text style={styles.backButtonText}>‹ back</Text>
         </Pressable>
-        <Component />
+        <ErrorBoundary>
+          <Component />
+        </ErrorBoundary>
       </View>
     );
   }
