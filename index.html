@@ -13,6 +13,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
     <title>Demo Hub</title>
+    <script>
+      // Polyfill: react-native-web's Animated uses global.cancelAnimationFrame
+      // which doesn't exist in browsers. Map it to window.
+      if (typeof global === 'undefined') { window.global = window; }
+    </script>
   </head>
   <body>
     <div id="root"></div>
