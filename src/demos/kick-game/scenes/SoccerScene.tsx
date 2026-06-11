@@ -3,6 +3,7 @@ import { Animated, Dimensions, Easing, StyleSheet, Vibration, View } from 'react
 import Svg, { Path } from 'react-native-svg';
 import SoccerGoal, { GOAL_ASPECT, SoccerBall, StickKeeper } from '../components/SoccerGoal';
 import { playImpact } from '../sounds';
+import { setBodyBg } from '../setBodyBg';
 import { BG_FLOOR, BG_SKY, INK } from '../theme';
 import type { SceneHandle, SceneProps } from '../types';
 
@@ -58,7 +59,7 @@ const SoccerScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) =>
   const shotRef = useRef(0);
   const animating = useRef(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => { setBodyBg(BG_FLOOR); }, []);
 
   const respawnBall = () => {
     ballTx.setValue(0);

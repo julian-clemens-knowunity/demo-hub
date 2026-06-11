@@ -1,6 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useEffect, useRef } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
 import { play } from '../sounds';
+import { setBodyBg } from '../setBodyBg';
 import { INK } from '../theme';
 import type { SceneHandle, SceneProps } from '../types';
 
@@ -22,6 +23,7 @@ const TitleScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => 
   const fade = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
+    setBodyBg(INTRO_BG);
     play('intro', { loop: true });
   }, []);
 

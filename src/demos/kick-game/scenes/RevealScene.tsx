@@ -11,6 +11,7 @@ const Ionicons = ({ name, size = 22, color = '#fff' }: { name: string; size?: nu
   return <Text style={{ fontSize: size, color, lineHeight: size + 2 }}>{icons[name] || '•'}</Text>;
 };
 import { play, stop } from '../sounds';
+import { setBodyBg } from '../setBodyBg';
 import type { SceneHandle, SceneProps } from '../types';
 
 import standby from '../assets/standby.png';
@@ -38,6 +39,7 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
   const ctaY = useRef(new Animated.Value(18)).current;
 
   useEffect(() => {
+    setBodyBg('#000000');
     // Black screen → ping
     play('reveal');
 

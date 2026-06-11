@@ -4,6 +4,8 @@ import Background from '../components/Background';
 import SodaCan, { CanColorKey } from '../components/SodaCan';
 import ImpactStar from '../components/ImpactStar';
 import { playImpact } from '../sounds';
+import { setBodyBg } from '../setBodyBg';
+import { BG_FLOOR } from '../theme';
 import type { SceneHandle, SceneProps } from '../types';
 
 const { width: SW, height: SH } = Dimensions.get('window');
@@ -50,6 +52,7 @@ const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
   };
 
   useEffect(() => {
+    setBodyBg(BG_FLOOR);
     Animated.spring(tx, { toValue: 0, useNativeDriver: false, bounciness: 8, speed: 11 }).start();
   }, [tx]);
 
