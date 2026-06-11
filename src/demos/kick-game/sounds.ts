@@ -83,8 +83,13 @@ export async function play(name: SoundName, opts?: { loop?: boolean; volume?: nu
 export async function stop(name: SoundName) {
   try {
     if (cache[name]) {
-      cache[name]!.pause();
-      cache[name]!.currentTime = 0;
+      const audio = cache[name]!;
+      // Hard cut — set volume to 0 BEFORE pause to skip browser anti-click fade.
+      audio.volume = 0;
+      audio.pause();
+      audio.currentTime = 0;
+      // Restore volume so next play isn't silent.
+      audio.volume = 0.9;
     }
   } catch {}
 }
