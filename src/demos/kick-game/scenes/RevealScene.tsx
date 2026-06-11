@@ -46,9 +46,8 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
     // the slide + face flip.
     const musicCutTimer = setTimeout(() => { stop('intro'); }, 1000);
 
-    // SIKE — fires only AFTER Knowie is fully in the frame.
-    // initialHold (1000) + slide (300) + faceFlip (100) = 1400ms.
-    const knowieSoundTimer = setTimeout(() => { play('sike'); }, 1400);
+    // SIKE — fires as Knowie is sliding in.
+    const knowieSoundTimer = setTimeout(() => { play('sike', { volume: 1 }); }, 900);
 
     // Chat pop-in at ~2000ms
     const chatPopTimer = setTimeout(() => { play('pop'); }, 1900);
