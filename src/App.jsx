@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { DEMOS } from './demos.config';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -34,14 +34,21 @@ function DemoGallery({ onSelectDemo }) {
 
 function App() {
   const [selectedDemo, setSelectedDemo] = useState(null);
+  const demo = selectedDemo ? DEMOS.find((d) => d.id === selectedDemo) : null;
+  const bgColor = demo?.bgColor ?? '#0a0a0a';
 
-  if (selectedDemo) {
-    const demo = DEMOS.find((d) => d.id === selectedDemo);
-    if (!demo) return null;
+  // Sync body background color so the iOS safe-area at the bottom matches the demo.
+  useEffect(() => {
+    document.body.style.backgroundColor = bgColor;
+    document.documentElement.style.backgroundColor = bgColor;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute('content', bgColor);
+  }, [bgColor]);
 
+  if (demo) {
     const Component = demo.component;
     return (
-      <View style={styles.demoContainer}>
+      <View style={[styles.demoContainer, { backgroundColor: bgColor }]}>
         <Pressable
           style={styles.backButton}
           onPress={() => setSelectedDemo(null)}

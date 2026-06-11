@@ -1,5 +1,16 @@
 import React from 'react';
 import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
+import standbyImg from '../assets/standby.png';
+import approvingImg from '../assets/approving.png';
+import excitedImg from '../assets/excited.png';
+import laughingImg from '../assets/laughing.png';
+import gigglingImg from '../assets/giggling.png';
+import amazedImg from '../assets/amazed.png';
+import angryImg from '../assets/angry.png';
+import dazedImg from '../assets/dazed.png';
+import overItImg from '../assets/overIt.png';
+import confusedImg from '../assets/confused.png';
+import questioningImg from '../assets/questioning.png';
 
 export type KnowieFace =
   | 'standby'
@@ -15,17 +26,17 @@ export type KnowieFace =
   | 'questioning';
 
 const FACE_IMAGES: Record<KnowieFace, ImageSourcePropType> = {
-  standby: require('../assets/standby.png'),
-  approving: require('../assets/approving.png'),
-  excited: require('../assets/excited.png'),
-  laughing: require('../assets/laughing.png'),
-  giggling: require('../assets/giggling.png'),
-  amazed: require('../assets/amazed.png'),
-  angry: require('../assets/angry.png'),
-  dazed: require('../assets/dazed.png'),
-  overIt: require('../assets/overIt.png'),
-  confused: require('../assets/confused.png'),
-  questioning: require('../assets/questioning.png'),
+  standby: standbyImg,
+  approving: approvingImg,
+  excited: excitedImg,
+  laughing: laughingImg,
+  giggling: gigglingImg,
+  amazed: amazedImg,
+  angry: angryImg,
+  dazed: dazedImg,
+  overIt: overItImg,
+  confused: confusedImg,
+  questioning: questioningImg,
 };
 
 const TINT: Record<KnowieFace, string> = {
