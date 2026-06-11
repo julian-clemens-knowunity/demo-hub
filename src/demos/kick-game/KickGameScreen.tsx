@@ -8,7 +8,7 @@ import MultiCanScene from './scenes/MultiCanScene';
 import MultiBagScene from './scenes/MultiBagScene';
 import SoccerScene from './scenes/SoccerScene';
 import RevealScene from './scenes/RevealScene';
-import { initAudio, resetImpactCycle, stop } from './sounds';
+import { initAudio, resetImpactCycle, stop, stopAll } from './sounds';
 import type { SceneHandle } from './types';
 import { BG_SKY } from './theme';
 import { BEAT_MS } from './rhythm';
@@ -39,7 +39,10 @@ export default function KickGameScreen() {
   const idxRef = useRef(0);
   idxRef.current = idx;
 
-  useEffect(() => { initAudio(); }, []);
+  useEffect(() => {
+    initAudio();
+    return () => { stopAll(); };
+  }, []);
 
   useEffect(() => {
     const entry = ORDER[idx];

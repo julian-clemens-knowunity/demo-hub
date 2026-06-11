@@ -94,6 +94,19 @@ export async function stop(name: SoundName) {
   } catch {}
 }
 
+export function stopAll() {
+  for (const name of Object.keys(cache) as SoundName[]) {
+    const audio = cache[name];
+    if (!audio) continue;
+    try {
+      audio.volume = 0;
+      audio.pause();
+      audio.currentTime = 0;
+      audio.volume = 0.9;
+    } catch {}
+  }
+}
+
 export function playImpact() {
   play('kick2');
 }
