@@ -14,12 +14,12 @@ const BAG_H = BAG_W * 2.2;
 const TOP_Y = SH * 0.5 - BAG_H * 0.5 + 30;
 
 const MultiBagScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => {
-  const fade = useRef(new Animated.Value(0)).current;
+  const fade = useRef(new Animated.Value(1)).current;
   // Pendulum swing — bag pivots from the chain at the top.
   const swing = useRef(new Animated.Value(0)).current;
   const squashX = useRef(new Animated.Value(1)).current;
   const squashY = useRef(new Animated.Value(1)).current;
-  const drop = useRef(new Animated.Value(-280)).current;
+  const drop = useRef(new Animated.Value(0)).current;
 
   // Fly-off on the final punch — clean upper-left arc, no rotation
   // (rotating a chain-pivoted bag swings the body wildly; skip it).
@@ -33,10 +33,7 @@ const MultiBagScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
   const punchRef = useRef(0);
   const animating = useRef(false);
 
-  useEffect(() => {
-    Animated.timing(fade, { toValue: 1, duration: 175, useNativeDriver: false }).start();
-    Animated.spring(drop, { toValue: 0, useNativeDriver: false, bounciness: 7, speed: 11 }).start();
-  }, [fade, drop]);
+  useEffect(() => {}, []);
 
   useImperativeHandle(ref, () => ({
     onFlick: (vx) => {
@@ -76,7 +73,7 @@ const MultiBagScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
             Animated.timing(launchY, { toValue: -SH * 0.55, duration: 300, easing: Easing.out(Easing.quad), useNativeDriver: false }),
           ]),
         ]).start(() => {
-          Animated.timing(fade, { toValue: 0, duration: 175, useNativeDriver: false }).start(() => onComplete());
+          onComplete();
         });
         return;
       }

@@ -38,7 +38,7 @@ const SHOTS = [
 ];
 
 const SoccerScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => {
-  const fade = useRef(new Animated.Value(0)).current;
+  const fade = useRef(new Animated.Value(1)).current;
   const ballTx = useRef(new Animated.Value(0)).current;
   const ballTy = useRef(new Animated.Value(0)).current;
   const ballRot = useRef(new Animated.Value(0)).current;
@@ -58,9 +58,7 @@ const SoccerScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) =>
   const shotRef = useRef(0);
   const animating = useRef(false);
 
-  useEffect(() => {
-    Animated.timing(fade, { toValue: 1, duration: 200, useNativeDriver: false }).start();
-  }, [fade]);
+  useEffect(() => {}, []);
 
   const respawnBall = () => {
     ballTx.setValue(0);
@@ -129,7 +127,7 @@ const SoccerScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) =>
             Animated.timing(goalOpacity, { toValue: 0, duration: 100, useNativeDriver: false }),
             Animated.timing(keeperFlatProg, { toValue: 1, duration: 400, easing: Easing.out(Easing.cubic), useNativeDriver: false }),
           ]).start(() => {
-            Animated.timing(fade, { toValue: 0, duration: 10, useNativeDriver: false }).start(() => onComplete());
+            onComplete();
           });
         } else {
           // reset keeper + respawn ball immediately so the next 300ms-poll

@@ -24,4 +24,7 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.tsx', '.ts', '.jsx', '.js', '.json'],
+  },
 })

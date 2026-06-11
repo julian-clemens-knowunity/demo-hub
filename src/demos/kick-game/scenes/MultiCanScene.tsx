@@ -25,8 +25,8 @@ const STAR_LEFT = SW * 0.5 - STAR_SIZE / 2;
 const STAR_TOP = FLOOR_TOP - STAR_SIZE / 2;
 
 const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => {
-  const fade = useRef(new Animated.Value(0)).current;
-  const tx = useRef(new Animated.Value(OFF_RIGHT)).current;
+  const fade = useRef(new Animated.Value(1)).current;
+  const tx = useRef(new Animated.Value(0)).current;
   const ty = useRef(new Animated.Value(0)).current;
   const rot = useRef(new Animated.Value(0)).current;
   const scale = useRef(new Animated.Value(1)).current;
@@ -39,20 +39,16 @@ const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
   const animating = useRef(false);
 
   const slideInNext = (nextColorIdx: number) => {
-    tx.setValue(OFF_RIGHT);
+    tx.setValue(0);
     ty.setValue(0);
     rot.setValue(0);
     scale.setValue(1);
     shake.setValue(0);
     setShowCrack(false);
     setColorIdx(nextColorIdx);
-    Animated.spring(tx, { toValue: 0, useNativeDriver: false, bounciness: 8, speed: 9 }).start();
   };
 
-  useEffect(() => {
-    Animated.timing(fade, { toValue: 1, duration: 175, useNativeDriver: false }).start();
-    Animated.spring(tx, { toValue: 0, useNativeDriver: false, bounciness: 8, speed: 11 }).start();
-  }, [fade, tx]);
+  useEffect(() => {}, []);
 
   useImperativeHandle(ref, () => ({
     onFlick: (vx) => {
@@ -96,7 +92,7 @@ const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
         const newCount = kickedCountRef.current + 1;
         kickedCountRef.current = newCount;
         if (newCount >= NUM_CANS) {
-          Animated.timing(fade, { toValue: 0, duration: 175, useNativeDriver: false }).start(() => onComplete());
+          onComplete();
         } else {
           slideInNext(newCount % CAN_COLORS.length);
           animating.current = false;
