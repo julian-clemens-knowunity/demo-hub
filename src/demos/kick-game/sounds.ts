@@ -43,7 +43,25 @@ const SOURCES: Record<SoundName, string> = {
 
 const cache: Partial<Record<SoundName, HTMLAudioElement>> = {};
 
-export async function initAudio() {}
+// Preload all sounds & unlock audio on iOS by triggering a silent play
+// in response to the first user gesture (the tap on the hub demo card).
+export async function initAudio() {
+  for (const name of Object.keys(SOURCES) as SoundName[]) {
+    if (cache[name]) continue;
+    const audio = new Audio(SOURCES[name]);
+    audio.volume = 0.9;
+    audio.preload = 'auto';
+    cache[name] = audio;
+    // iOS audio unlock: play muted, then pause + reset. Subsequent plays work.
+    try {
+      audio.muted = true;
+      await audio.play();
+      audio.pause();
+      audio.currentTime = 0;
+      audio.muted = false;
+    } catch {}
+  }
+}
 
 export async function play(name: SoundName, opts?: { loop?: boolean; volume?: number }) {
   try {

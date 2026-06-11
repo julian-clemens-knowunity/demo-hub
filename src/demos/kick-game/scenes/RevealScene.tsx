@@ -38,6 +38,9 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
   const ctaY = useRef(new Animated.Value(18)).current;
 
   useEffect(() => {
+    // Black screen → ping
+    play('reveal');
+
     // Cut the background music ABRUPTLY the moment Knowie starts appearing
     // (end of black-screen hold, start of slide-up). Pure silence covers
     // the slide + face flip.
@@ -46,6 +49,9 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
     // SIKE — fires only AFTER Knowie is fully in the frame.
     // initialHold (1000) + slide (300) + faceFlip (100) = 1400ms.
     const knowieSoundTimer = setTimeout(() => { play('sike'); }, 1400);
+
+    // Chat pop-in at ~2000ms
+    const chatPopTimer = setTimeout(() => { play('pop'); }, 1900);
 
     Animated.sequence([
       // Hold on the black screen for a beat before Knowie pops up.
@@ -82,7 +88,7 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
       ])
     );
     bobLoop.start();
-    return () => { bobLoop.stop(); clearTimeout(musicCutTimer); clearTimeout(knowieSoundTimer); };
+    return () => { bobLoop.stop(); clearTimeout(musicCutTimer); clearTimeout(knowieSoundTimer); clearTimeout(chatPopTimer); };
   }, [darkBgOp, knowieY, knowieScale, knowieFace, greetOp, greetScale, headerOp, barY, barOp, ctaOp, ctaY, knowieBob]);
 
   useImperativeHandle(ref, () => ({ onFlick: () => {} }));
