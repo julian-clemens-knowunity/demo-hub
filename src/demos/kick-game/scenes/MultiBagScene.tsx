@@ -5,7 +5,7 @@ import PunchingBag from '../components/PunchingBag';
 import ImpactLines from '../components/ImpactLines';
 import { play, playImpact } from '../sounds';
 import { setBodyBg } from '../setBodyBg';
-import { BG_FLOOR } from '../theme';
+import { BG_SKY } from '../theme';
 import type { SceneHandle, SceneProps } from '../types';
 
 const { width: SW, height: SH } = Dimensions.get('window');
@@ -35,7 +35,7 @@ const MultiBagScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
   const punchRef = useRef(0);
   const animating = useRef(false);
 
-  useEffect(() => { setBodyBg(BG_FLOOR); }, []);
+  useEffect(() => { setBodyBg(BG_SKY); }, []);
 
   useImperativeHandle(ref, () => ({
     onFlick: (vx) => {
