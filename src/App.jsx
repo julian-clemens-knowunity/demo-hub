@@ -37,13 +37,17 @@ function App() {
   const demo = selectedDemo ? DEMOS.find((d) => d.id === selectedDemo) : null;
   const bgColor = demo?.bgColor ?? '#0a0a0a';
 
-  // Sync body background color so the iOS safe-area at the bottom matches the demo.
+  // Set body bg only when there's NO demo (gallery view) OR when the demo
+  // doesn't manage its own bg. Each kick-game scene calls setBodyBg() itself;
+  // we'd just clobber it if we ran on every parent render.
   useEffect(() => {
-    document.body.style.backgroundColor = bgColor;
-    document.documentElement.style.backgroundColor = bgColor;
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (themeMeta) themeMeta.setAttribute('content', bgColor);
-  }, [bgColor]);
+    if (!selectedDemo) {
+      document.body.style.backgroundColor = '#0a0a0a';
+      document.documentElement.style.backgroundColor = '#0a0a0a';
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute('content', '#0a0a0a');
+    }
+  }, [selectedDemo]);
 
   if (demo) {
     const Component = demo.component;
