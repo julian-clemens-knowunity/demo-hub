@@ -3,8 +3,14 @@
 
 import HelloDemo from './demos/hello-demo/HelloDemo';
 import QuizSort from './demos/quiz-sort/QuizSortScreen';
+import KickGame from './demos/kick-game/KickGameScreen';
 
 export const DEMOS = [
+  {
+    id: 'kick-game',
+    name: 'Kick Game',
+    component: KickGame,
+  },
   {
     id: 'quiz-sort',
     name: 'Quiz Sort',

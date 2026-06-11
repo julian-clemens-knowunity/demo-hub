@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 const safeAreaShim = path.resolve(__dirname, './src/safe-area-shim.jsx')
-const codegenShim = path.resolve(__dirname, './src/react-native-shim.js')
+const rnShim = path.resolve(__dirname, './src/react-native-shim.js')
 
 export default defineConfig({
   plugins: [
@@ -15,15 +15,13 @@ export default defineConfig({
         if (id === 'react-native-safe-area-context') {
           return safeAreaShim
         }
+        if (id === 'react-native') {
+          return rnShim
+        }
         if (id.includes('codegenNativeComponent')) {
-          return codegenShim
+          return rnShim
         }
       },
     },
   ],
-  resolve: {
-    alias: {
-      'react-native': 'react-native-web',
-    },
-  },
 })
