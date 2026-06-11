@@ -13,9 +13,10 @@ const Ionicons = ({ name, size = 22, color = '#fff' }: { name: string; size?: nu
 import { play, stop } from '../sounds';
 import type { SceneHandle, SceneProps } from '../types';
 
+import standby from '../assets/standby.png';
+import excited from '../assets/excited.png';
+
 const { width: SW, height: SH } = Dimensions.get('window');
-const standby = require('../assets/standby.png');
-const excited = require('../assets/excited.png');
 
 const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
   // Black bg shows instantly on mount — no fade-in transition.

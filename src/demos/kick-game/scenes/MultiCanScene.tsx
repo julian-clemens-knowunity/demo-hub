@@ -26,7 +26,7 @@ const STAR_TOP = FLOOR_TOP - STAR_SIZE / 2;
 
 const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => {
   const fade = useRef(new Animated.Value(1)).current;
-  const tx = useRef(new Animated.Value(0)).current;
+  const tx = useRef(new Animated.Value(OFF_RIGHT)).current;
   const ty = useRef(new Animated.Value(0)).current;
   const rot = useRef(new Animated.Value(0)).current;
   const scale = useRef(new Animated.Value(1)).current;
@@ -39,16 +39,19 @@ const MultiCanScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) 
   const animating = useRef(false);
 
   const slideInNext = (nextColorIdx: number) => {
-    tx.setValue(0);
+    tx.setValue(OFF_RIGHT);
     ty.setValue(0);
     rot.setValue(0);
     scale.setValue(1);
     shake.setValue(0);
     setShowCrack(false);
     setColorIdx(nextColorIdx);
+    Animated.spring(tx, { toValue: 0, useNativeDriver: false, bounciness: 8, speed: 9 }).start();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    Animated.spring(tx, { toValue: 0, useNativeDriver: false, bounciness: 8, speed: 11 }).start();
+  }, [tx]);
 
   useImperativeHandle(ref, () => ({
     onFlick: (vx) => {

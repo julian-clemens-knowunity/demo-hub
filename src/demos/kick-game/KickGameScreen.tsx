@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, PanResponder, StyleSheet, Text, View } from 'react-native';
+import soccerballUrl from './assets/soccerball.png';
 
-const PRELOAD_ASSETS = [
-  require('./assets/soccerball.png'),
-];
+const PRELOAD_ASSETS = [soccerballUrl];
 import TitleScene from './scenes/TitleScene';
 import MultiCanScene from './scenes/MultiCanScene';
 import MultiBagScene from './scenes/MultiBagScene';

@@ -2,8 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import Svg, { Circle, Line, Path, Rect, G } from 'react-native-svg';
 import { INK } from '../theme';
-
-const ballImage = require('../assets/soccerball.png');
+import ballImage from '../assets/soccerball.png';
 
 // Aspect of the rendered goal — viewBox 280×150 → height/width ≈ 0.536.
 // Exported so SoccerScene can derive GOAL_H without drifting out of sync.
