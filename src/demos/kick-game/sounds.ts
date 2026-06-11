@@ -1,33 +1,49 @@
+import whooshUrl from './assets/sounds/whoosh.mp3';
+import thudUrl from './assets/sounds/thud.mp3';
+import kickUrl from './assets/sounds/kick.mp3';
+import punchUrl from './assets/sounds/punch.mp3';
+import crackUrl from './assets/sounds/crack.mp3';
+import shatterUrl from './assets/sounds/shatter.mp3';
+import popUrl from './assets/sounds/pop.mp3';
+import cheerUrl from './assets/sounds/cheer.mp3';
+import dingUrl from './assets/sounds/ding.mp3';
+import revealUrl from './assets/sounds/reveal.mp3';
+import introUrl from './assets/sounds/intro.mp3';
+import sikeUrl from './assets/sounds/sike.mp3';
+import kick1Url from './assets/sounds/kick1.mp3';
+import kick2Url from './assets/sounds/kick2.mp3';
+import kick3Url from './assets/sounds/kick3.mp3';
+import kick4Url from './assets/sounds/kick4.mp3';
+import kick5Url from './assets/sounds/kick5.mp3';
+
 export type SoundName =
   | 'whoosh' | 'thud' | 'kick' | 'punch'
   | 'crack' | 'shatter' | 'pop' | 'cheer' | 'ding' | 'reveal' | 'intro' | 'sike'
   | 'kick1' | 'kick2' | 'kick3' | 'kick4' | 'kick5';
 
-const SOURCES: Record<SoundName, any> = {
-  whoosh:  require('./assets/sounds/whoosh.mp3'),
-  thud:    require('./assets/sounds/thud.mp3'),
-  kick:    require('./assets/sounds/kick.mp3'),
-  punch:   require('./assets/sounds/punch.mp3'),
-  crack:   require('./assets/sounds/crack.mp3'),
-  shatter: require('./assets/sounds/shatter.mp3'),
-  pop:     require('./assets/sounds/pop.mp3'),
-  cheer:   require('./assets/sounds/cheer.mp3'),
-  ding:    require('./assets/sounds/ding.mp3'),
-  reveal:  require('./assets/sounds/reveal.mp3'),
-  intro:   require('./assets/sounds/intro.mp3'),
-  sike:    require('./assets/sounds/sike.mp3'),
-  kick1:   require('./assets/sounds/kick1.mp3'),
-  kick2:   require('./assets/sounds/kick2.mp3'),
-  kick3:   require('./assets/sounds/kick3.mp3'),
-  kick4:   require('./assets/sounds/kick4.mp3'),
-  kick5:   require('./assets/sounds/kick5.mp3'),
+const SOURCES: Record<SoundName, string> = {
+  whoosh: whooshUrl,
+  thud: thudUrl,
+  kick: kickUrl,
+  punch: punchUrl,
+  crack: crackUrl,
+  shatter: shatterUrl,
+  pop: popUrl,
+  cheer: cheerUrl,
+  ding: dingUrl,
+  reveal: revealUrl,
+  intro: introUrl,
+  sike: sikeUrl,
+  kick1: kick1Url,
+  kick2: kick2Url,
+  kick3: kick3Url,
+  kick4: kick4Url,
+  kick5: kick5Url,
 };
 
 const cache: Partial<Record<SoundName, HTMLAudioElement>> = {};
 
-export async function initAudio() {
-  // No-op on web; audio plays on user interaction
-}
+export async function initAudio() {}
 
 export async function play(name: SoundName, opts?: { loop?: boolean; volume?: number }) {
   try {

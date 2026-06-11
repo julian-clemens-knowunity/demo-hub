@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     alignItems: 'center', justifyContent: 'center',
   },
-  statText: { color: '#FFFFFF', fontFamily: 'Inter_700Bold', fontSize: 14 },
+  statText: { color: '#FFFFFF', fontFamily: 'Inter', fontWeight: '700', fontSize: 14 },
 
   knowieSlot: {
     position: 'absolute',
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   greet: {
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'Inter', fontWeight: '700',
     fontSize: 28,
     color: '#FFFFFF',
     textAlign: 'center',
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     bottom: 156,
     alignItems: 'center',
   },
-  cta: { fontFamily: 'Inter_700Bold', fontSize: 36, color: '#FFFFFF', letterSpacing: -0.8 },
+  cta: { fontFamily: 'Inter', fontWeight: '700', fontSize: 36, color: '#FFFFFF', letterSpacing: -0.8 },
 
   barWrap: {
     position: 'absolute',
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 12,
     color: 'rgba(255,255,255,0.55)',
-    fontFamily: 'Inter_600SemiBold',
+    fontFamily: 'Inter', fontWeight: '600',
     fontSize: 16,
   },
   barIconRow: { flexDirection: 'row', alignItems: 'center', paddingRight: 14 },

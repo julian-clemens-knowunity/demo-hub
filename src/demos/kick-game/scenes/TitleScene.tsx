@@ -6,7 +6,7 @@ import type { SceneHandle, SceneProps } from '../types';
 
 const { width: SW, height: SH } = Dimensions.get('window');
 
-const intro = require('../assets/intro.mp4');
+import introUrl from '../assets/intro.mp4';
 
 // Matches the solid background colour inside the intro clip so there's no
 // visible seam during fade-in / first-frame decode.
@@ -40,7 +40,7 @@ const TitleScene = forwardRef<SceneHandle, SceneProps>(({ onComplete }, ref) => 
     <Animated.View style={[styles.root, { opacity: fade }]}>
       <View style={styles.intro}>
         <video
-          src={intro}
+          src={introUrl}
           autoPlay
           muted
           playsInline
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     top: 110,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'Inter', fontWeight: '700',
     fontSize: 50,
     color: INK,
     letterSpacing: -1.2,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   sub: {
     position: 'absolute',
     top: 168,
-    fontFamily: 'Inter_600SemiBold',
+    fontFamily: 'Inter', fontWeight: '600',
     fontSize: 15,
     color: INK,
     opacity: 0.62,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   swipeHint: {
     position: 'absolute',
     bottom: 90,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'Inter', fontWeight: '700',
     fontSize: 18,
     color: INK,
     opacity: 0.55,
