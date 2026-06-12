@@ -21,7 +21,7 @@ export const DEMOS = [
   },
   {
     id: 'teacher-eli5',
-    name: 'Teacher · ELI5',
+    name: 'Talking Teacher',
     component: TeacherEli5,
     bgColor: '#000000',
   },
