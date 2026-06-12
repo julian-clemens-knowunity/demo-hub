@@ -284,8 +284,10 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: KU.bg, paddingHorizontal: 18 },
   backChip: {
     position: 'absolute',
-    top: 58,
-    left: 18,
+    // Hub's own "‹ back" sits at top:50/left:16 — shift this one to the right
+    // so the two buttons sit side-by-side instead of stacked.
+    top: 50,
+    left: 96,
     zIndex: 10,
     paddingVertical: 8,
     paddingHorizontal: 14,
