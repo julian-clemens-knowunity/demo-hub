@@ -1,0 +1,25 @@
+{
+  "id": "dna",
+  "emoji": "🧬",
+  "accent": "#8E51FF",
+  "languages": {
+    "en": {
+      "title": "DNA",
+      "subtitle": "Your body's instruction manual",
+      "normal": "...and so the antiparallel strands of the double helix unwind during semi-conservative replication.",
+      "eli5": "Okay, five-year-old version. Imagine your body is built from tiny LEGO blocks. DNA is the instruction booklet that came in the box. It tells your blocks how to make hair, and eyes, and toes. Half the booklet came from your mom, and half came from your dad. That's why you look a little bit like both of them. Pretty neat, huh?"
+    },
+    "pl": {
+      "title": "DNA",
+      "subtitle": "Instrukcja obsługi twojego ciała",
+      "normal": "...a antyrównoległe nici podwójnej helisy rozplatają się podczas semi-konserwatywnej replikacji.",
+      "eli5": "OK, wersja dla pięciolatka. Wyobraź sobie, że twoje ciało jest zbudowane z malutkich klocków LEGO. DNA to instrukcja, która była w pudełku. Mówi klockom, jak zrobić włosy, oczy, i palce u stóp. Połowa instrukcji jest od mamy, a druga połowa od taty. Dlatego trochę wyglądasz jak oboje. Fajne, co nie?"
+    },
+    "de": {
+      "title": "DNA",
+      "subtitle": "Die Bauanleitung deines Körpers",
+      "normal": "...und die antiparallelen Stränge der Doppelhelix entwinden sich während der semikonservativen Replikation.",
+      "eli5": "Okay, Fünfjährigen-Version. Stell dir vor, dein Körper ist aus winzigen LEGO-Steinen gebaut. DNA ist die Anleitung, die in der Schachtel lag. Sie sagt deinen Steinen, wie sie Haare, Augen, und Zehen machen sollen. Die Hälfte der Anleitung kommt von deiner Mama, die andere Hälfte von deinem Papa. Deshalb siehst du ein bisschen aus wie beide. Ziemlich cool, oder?"
+    }
+  }
+}

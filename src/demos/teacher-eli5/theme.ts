@@ -1,0 +1,21 @@
+// KU dark-theme tokens (see HANDOVER.md "Knowunity app design tokens" section).
+export const KU = {
+  bg: '#000000',
+  bgElevated: '#1A1A1A',
+  bgInput: '#252525',
+  bgUserBubble: 'rgba(255,255,255,0.10)',
+  textPrimary: '#FFFFFF',
+  textSecondary: 'rgba(255,255,255,0.68)',
+  textMuted: 'rgba(255,255,255,0.40)',
+  sendBg: '#FFFFFF',
+  sendIcon: '#000000',
+  accentBlue: '#2B7FFF',
+  accentPurple: '#8E51FF',
+  accentGreen: '#00C950',
+  accentRed: '#FB2C36',
+  accentOrange: '#FF6900',
+  accentPink: '#E84DA2',
+  r16: 16,
+  r24: 24,
+  r36: 36,
+};

@@ -1,0 +1,25 @@
+{
+  "id": "black-holes",
+  "emoji": "🕳️",
+  "accent": "#2B7FFF",
+  "languages": {
+    "en": {
+      "title": "Black Holes",
+      "subtitle": "The point of no return",
+      "normal": "...which means that once the Schwarzschild radius is breached, not even light can achieve escape velocity.",
+      "eli5": "Okay, easy mode. Imagine a really big bathtub drain in space. If something gets too close, it falls in and never comes back. Not your sock, not light, not even time itself. The drain is invisible. But you can see things spinning around it before they get pulled in. And the biggest ones live in the middle of galaxies. They are very, very hungry."
+    },
+    "pl": {
+      "title": "Czarne Dziury",
+      "subtitle": "Punkt bez powrotu",
+      "normal": "...co oznacza, że po przekroczeniu promienia Schwarzschilda nawet światło nie osiąga prędkości ucieczki.",
+      "eli5": "OK, łatwy tryb. Wyobraź sobie naprawdę wielki odpływ od wanny w kosmosie. Jeśli coś podejdzie za blisko, wpada i nigdy nie wraca. Ani twoja skarpetka, ani światło, ani nawet czas. Sam odpływ jest niewidzialny. Ale widać rzeczy, które kręcą się wokół niego, zanim zostaną wciągnięte. A te największe mieszkają w środku galaktyk. Są bardzo, bardzo głodne."
+    },
+    "de": {
+      "title": "Schwarze Löcher",
+      "subtitle": "Der Punkt ohne Wiederkehr",
+      "normal": "...was bedeutet, dass nach Überschreiten des Schwarzschild-Radius selbst Licht keine Fluchtgeschwindigkeit mehr erreichen kann.",
+      "eli5": "Okay, einfacher Modus. Stell dir einen wirklich großen Badewannenabfluss im Weltall vor. Wenn etwas zu nah kommt, fällt es rein und kommt nie wieder raus. Nicht deine Socke, nicht Licht, nicht mal die Zeit selbst. Der Abfluss ist unsichtbar. Aber du kannst die Sachen sehen, die sich um ihn drehen, bevor sie reingezogen werden. Und die größten leben in der Mitte von Galaxien. Sie sind sehr, sehr hungrig."
+    }
+  }
+}

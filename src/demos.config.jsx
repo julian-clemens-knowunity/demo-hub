@@ -3,6 +3,7 @@
 
 import QuizSort from './demos/quiz-sort/QuizSortScreen';
 import KickGame from './demos/kick-game/KickGameScreen';
+import TeacherEli5 from './demos/teacher-eli5/TeacherEli5Screen';
 
 export const DEMOS = [
   {
@@ -17,5 +18,11 @@ export const DEMOS = [
     name: 'Quiz Sort',
     component: QuizSort,
     bgColor: '#0a0a0a',
+  },
+  {
+    id: 'teacher-eli5',
+    name: 'Teacher · ELI5',
+    component: TeacherEli5,
+    bgColor: '#000000',
   },
 ];

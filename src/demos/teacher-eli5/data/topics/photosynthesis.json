@@ -1,0 +1,25 @@
+{
+  "id": "photosynthesis",
+  "emoji": "🌿",
+  "accent": "#00C950",
+  "languages": {
+    "en": {
+      "title": "Photosynthesis",
+      "subtitle": "How plants eat sunlight",
+      "normal": "...and so the resulting glucose is transported via the phloem to non-photosynthetic tissues.",
+      "eli5": "Okay, like you're five. Plants eat sunshine. Their leaves catch sunlight, sip up some water from the ground, and breathe in air. Then they mix all three together inside themselves, and turn it into food. And the cool part? They give us back fresh air to breathe. Pretty good deal, right?"
+    },
+    "pl": {
+      "title": "Fotosynteza",
+      "subtitle": "Jak rośliny jedzą światło",
+      "normal": "...a powstała glukoza jest transportowana przez floem do tkanek niefotosyntetyzujących.",
+      "eli5": "Dobra, jakbyś miał pięć lat. Rośliny jedzą światło. Ich liście łapią słońce, piją wodę z ziemi, i oddychają powietrzem. Potem mieszają wszystko razem i robią z tego jedzenie. A wiesz, co jest najfajniejsze? Oddają nam świeże powietrze. Niezły deal, co nie?"
+    },
+    "de": {
+      "title": "Photosynthese",
+      "subtitle": "Wie Pflanzen Sonnenlicht essen",
+      "normal": "...und die entstandene Glukose wird über das Phloem in die nicht-photosynthetisch aktiven Gewebe transportiert.",
+      "eli5": "Okay, so als wärst du fünf. Pflanzen essen Sonnenlicht. Ihre Blätter fangen die Sonne, schlürfen Wasser aus dem Boden, und atmen Luft ein. Dann mischen sie alles in sich zusammen und machen daraus Essen. Und das Coole? Sie geben uns frische Luft zum Atmen zurück. Ziemlich guter Deal, oder?"
+    }
+  }
+}

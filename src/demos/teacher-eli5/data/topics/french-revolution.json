@@ -1,0 +1,25 @@
+{
+  "id": "french-revolution",
+  "emoji": "🇫🇷",
+  "accent": "#E84DA2",
+  "languages": {
+    "en": {
+      "title": "The French Revolution",
+      "subtitle": "How a kingdom became a republic",
+      "normal": "...which ultimately catalyzed the dissolution of the ancien régime and the rise of popular sovereignty.",
+      "eli5": "Okay, simpler. Once upon a time, there was a king in France who threw fancy parties and ate cake while everyone else was hungry. So the people got really, really mad. They grabbed pitchforks, knocked down a big royal prison, and told the king he wasn't in charge anymore. After that, France decided regular people should run the country, not kings. And that's why we vote today."
+    },
+    "pl": {
+      "title": "Rewolucja Francuska",
+      "subtitle": "Jak królestwo stało się republiką",
+      "normal": "...co ostatecznie doprowadziło do rozpadu ancien régime'u i narodzin suwerenności ludu.",
+      "eli5": "Dobra, prościej. Dawno temu we Francji był sobie król, który urządzał wystawne bale i jadł ciastka, podczas gdy wszyscy inni byli głodni. Ludzie się naprawdę wkurzyli. Wzięli widły, zburzyli ogromne królewskie więzienie, i powiedzieli królowi, że już nie rządzi. Potem Francja uznała, że to zwykli ludzie powinni rządzić, a nie królowie. I dlatego dzisiaj głosujemy."
+    },
+    "de": {
+      "title": "Die Französische Revolution",
+      "subtitle": "Wie ein Königreich zur Republik wurde",
+      "normal": "...was letztlich den Zusammenbruch des Ancien Régime und die Geburt der Volkssouveränität herbeiführte.",
+      "eli5": "Okay, einfacher. Es war einmal ein König in Frankreich, der riesige Partys schmiss und Kuchen aß, während alle anderen hungerten. Die Leute wurden richtig, richtig sauer. Sie schnappten sich Mistgabeln, rissen ein großes königliches Gefängnis ein, und sagten dem König, dass er nicht mehr das Sagen hat. Danach hat Frankreich beschlossen, dass normale Leute das Land regieren sollten, nicht Könige. Und deshalb wählen wir heute."
+    }
+  }
+}
