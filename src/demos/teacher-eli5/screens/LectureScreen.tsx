@@ -234,9 +234,6 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
       </Pressable>
 
       <View style={styles.header}>
-        <View style={[styles.emojiBadge, { backgroundColor: accent + '26' }]}>
-          <Text style={styles.emoji}>{topic.emoji}</Text>
-        </View>
         <Text style={styles.topicTitle}>{s.studyWith(teacher.name)}</Text>
       </View>
 
@@ -307,15 +304,6 @@ const styles = StyleSheet.create({
   backText: { color: KU.textSecondary, fontSize: 14, fontWeight: '600' },
 
   header: { alignItems: 'center', paddingTop: 80, paddingBottom: 24 },
-  emojiBadge: {
-    width: 84,
-    height: 84,
-    borderRadius: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  emoji: { fontSize: 44 },
   topicTitle: {
     color: KU.textPrimary,
     fontSize: 28,
