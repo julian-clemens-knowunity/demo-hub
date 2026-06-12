@@ -28,7 +28,12 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
   const [currentMode, setCurrentMode] = useState<Mode>('normal');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const vad = useVAD({ speechDb: -32, silenceMs: 1300, maxMs: 12000 });
+  // Pre-created Audio elements, keyed by mode. We create + unlock them on the
+  // initial user tap so iOS Safari lets us .play() the ELI5 one later (when
+  // VAD-driven, NOT user-gesture-driven).
+  const audioPool = useRef<Record<Mode, HTMLAudioElement | null>>({ normal: null, eli5: null });
+  const unlockedRef = useRef(false);
+  const vad = useVAD({ speechDb: -25, silenceMs: 1000, maxMs: 10000 });
 
   const ringScale = useRef(new Animated.Value(1)).current;
 
@@ -41,10 +46,44 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
         } catch {}
         audioRef.current = null;
       }
+      // Tear down both pool elements.
+      (['normal', 'eli5'] as Mode[]).forEach((m) => {
+        const a = audioPool.current[m];
+        if (a) {
+          try { a.pause(); a.src = ''; } catch {}
+        }
+        audioPool.current[m] = null;
+      });
       vad.stop('idle').catch(() => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // iOS Safari blocks .play() unless triggered by a user gesture. We "unlock"
+  // both Audio elements on the user's initial tap by calling .play() + immediate
+  // .pause() — this primes them so later non-gesture .play() calls work.
+  const unlockAudioPool = () => {
+    if (unlockedRef.current) return;
+    unlockedRef.current = true;
+    (['normal', 'eli5'] as Mode[]).forEach((m) => {
+      try {
+        const url = getAudio(topic.id, language, m, teacher.id);
+        const audio = new Audio(url);
+        audio.preload = 'auto';
+        audio.volume = 1;
+        // Prime by attempting silent play+pause; ignore failures.
+        audio.muted = true;
+        audio.play().then(() => {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.muted = false;
+        }).catch(() => {
+          audio.muted = false;
+        });
+        audioPool.current[m] = audio;
+      } catch {}
+    });
+  };
 
   // VAD signals "ended" while listening → play ELI5
   useEffect(() => {
@@ -76,11 +115,10 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
   }, [phase, ringScale]);
 
   const playMode = async (mode: Mode) => {
+    // Pause any currently-playing audio without nuking the pool element so
+    // we can reuse it.
     if (audioRef.current) {
-      try {
-        audioRef.current.pause();
-        audioRef.current.src = '';
-      } catch {}
+      try { audioRef.current.pause(); } catch {}
       audioRef.current = null;
     }
     if (vad.state !== 'idle') {
@@ -92,18 +130,28 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
     setPhase(mode === 'normal' ? 'playing' : 'eli5');
 
     try {
-      const url = getAudio(topic.id, language, mode, teacher.id);
-      const audio = new Audio(url);
+      // Prefer the pre-unlocked pool element so iOS Safari lets us play
+      // even when VAD (not user gesture) triggered this call.
+      let audio = audioPool.current[mode];
+      if (!audio) {
+        const url = getAudio(topic.id, language, mode, teacher.id);
+        audio = new Audio(url);
+        audio.volume = 1;
+        audioPool.current[mode] = audio;
+      }
+      audio.currentTime = 0;
       audio.volume = 1;
       audioRef.current = audio;
-      audio.addEventListener('ended', () => {
+      const onEnded = () => {
+        audio!.removeEventListener('ended', onEnded);
         if (audioRef.current !== audio) return;
         if (mode === 'normal') {
           startListening();
         } else {
           setPhase('done');
         }
-      });
+      };
+      audio.addEventListener('ended', onEnded);
       await audio.play();
     } catch (e) {
       console.warn('[Lecture] playback error', e);
@@ -117,6 +165,7 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
   };
 
   const handleCardTap = () => {
+    unlockAudioPool();
     if (phase === 'preroll' || phase === 'done') {
       playMode('normal');
     } else if (phase === 'listening') {
@@ -131,8 +180,8 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
     }
   };
 
-  const handleReexplain = () => playMode('eli5');
-  const handleReplay = () => playMode('normal');
+  const handleReexplain = () => { unlockAudioPool(); playMode('eli5'); };
+  const handleReplay = () => { unlockAudioPool(); playMode('normal'); };
 
   const accent = topic.accent;
 
