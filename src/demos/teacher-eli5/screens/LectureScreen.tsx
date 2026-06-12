@@ -280,7 +280,7 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
             pressed && { opacity: 0.8 },
           ]}
         >
-          <Text style={styles.actionPrimaryText}>🎤  {s.letMeSpeak}</Text>
+          <Text style={styles.actionPrimaryText}>{s.letMeSpeak}</Text>
         </Pressable>
       </View>
     </SafeAreaView>
