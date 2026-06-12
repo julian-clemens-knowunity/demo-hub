@@ -1,4 +1,6 @@
 // Web port: plays mp3s via HTMLAudioElement, listens via Web Audio API VAD.
+// Bottom "Let me speak now" button cuts off whatever's playing and opens the
+// mic immediately.
 
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -22,7 +24,6 @@ type Props = {
 
 export function LectureScreen({ topic, teacher, language, onBack }: Props) {
   const s = t(language);
-  const loc = topic.languages[language];
 
   const [phase, setPhase] = useState<Phase>('preroll');
   const [currentMode, setCurrentMode] = useState<Mode>('normal');
@@ -172,9 +173,8 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
     unlockAudioPool();
     if (phase === 'preroll' || phase === 'done') {
       playMode('normal');
-    } else if (phase === 'listening') {
-      playMode('eli5');
     } else if (phase === 'playing' || phase === 'eli5') {
+      // Tap during playback → skip ahead
       if (audioRef.current) {
         try { audioRef.current.pause(); } catch {}
         audioRef.current = null;
@@ -182,9 +182,20 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
       if (currentMode === 'normal') startListening();
       else setPhase('done');
     }
+    // Tapping during listening = no-op (use the speak button or speak)
   };
 
-  const handleReexplain = () => { unlockAudioPool(); playMode('eli5'); };
+  // "Let me speak now" — cut off whatever's playing, open the mic
+  const handleLetMeSpeak = async () => {
+    unlockAudioPool();
+    if (phase === 'listening') return;
+    if (audioRef.current) {
+      try { audioRef.current.pause(); } catch {}
+      audioRef.current = null;
+    }
+    await startListening();
+  };
+
   const handleReplay = () => { unlockAudioPool(); playMode('normal'); };
 
   const accent = topic.accent;
@@ -226,8 +237,7 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
         <View style={[styles.emojiBadge, { backgroundColor: accent + '26' }]}>
           <Text style={styles.emoji}>{topic.emoji}</Text>
         </View>
-        <Text style={styles.topicTitle}>{loc.title}</Text>
-        <Text style={styles.teacherName}>with {teacher.name}</Text>
+        <Text style={styles.topicTitle}>{s.studyWith(teacher.name)}</Text>
       </View>
 
       <Pressable style={styles.centerArea} onPress={handleCardTap}>
@@ -266,14 +276,14 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
           <Text style={styles.actionText}>{s.replay}</Text>
         </Pressable>
         <Pressable
-          onPress={handleReexplain}
+          onPress={handleLetMeSpeak}
           style={({ pressed }) => [
             styles.actionPrimary,
             { backgroundColor: accent },
             pressed && { opacity: 0.8 },
           ]}
         >
-          <Text style={styles.actionPrimaryText}>{s.explainLike5}</Text>
+          <Text style={styles.actionPrimaryText}>🎤  {s.letMeSpeak}</Text>
         </Pressable>
       </View>
     </SafeAreaView>
@@ -312,7 +322,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: -0.4,
   },
-  teacherName: { color: KU.textSecondary, fontSize: 16, marginTop: 6 },
 
   centerArea: {
     flex: 1,

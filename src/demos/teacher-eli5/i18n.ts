@@ -25,7 +25,8 @@ export const STRINGS = {
     done: 'Done.',
     tapAgain: 'Tap to hear the lesson again',
     replay: '↺ replay',
-    explainLike5: "Explain like I'm 5",
+    letMeSpeak: 'Let me speak now',
+    studyWith: (name: string) => `Study with ${name}`,
   },
   pl: {
     pickLessonEyebrow: 'WYBIERZ LEKCJĘ',
@@ -49,7 +50,8 @@ export const STRINGS = {
     done: 'Skończone.',
     tapAgain: 'Stuknij, aby usłyszeć lekcję ponownie',
     replay: '↺ powtórz',
-    explainLike5: 'Wyjaśnij jak pięciolatkowi',
+    letMeSpeak: 'Daj mi powiedzieć',
+    studyWith: (name: string) => `Ucz się z ${name}`,
   },
   de: {
     pickLessonEyebrow: 'WÄHLE EINE LEKTION',
@@ -73,7 +75,8 @@ export const STRINGS = {
     done: 'Fertig.',
     tapAgain: 'Tippen, um die Lektion nochmal zu hören',
     replay: '↺ nochmal',
-    explainLike5: "Erklär's für einen 5 jährigen",
+    letMeSpeak: 'Lass mich jetzt reden',
+    studyWith: (name: string) => `Lerne mit ${name}`,
   },
 } as const;
 
