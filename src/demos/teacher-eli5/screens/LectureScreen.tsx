@@ -60,8 +60,11 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
   }, []);
 
   // iOS Safari blocks .play() unless triggered by a user gesture. We "unlock"
-  // both Audio elements on the user's initial tap by calling .play() + immediate
-  // .pause() — this primes them so later non-gesture .play() calls work.
+  // both Audio elements on the user's initial tap by calling .play()+.pause()
+  // synchronously inside the gesture handler. We do NOT use the .then() of
+  // play() to pause — that resolves asynchronously and was racing with the
+  // real playMode() call (the unlock pause was landing AFTER the real play,
+  // muting the first audio). Synchronous pause + reload is the workaround.
   const unlockAudioPool = () => {
     if (unlockedRef.current) return;
     unlockedRef.current = true;
@@ -70,16 +73,14 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
         const url = getAudio(topic.id, language, m, teacher.id);
         const audio = new Audio(url);
         audio.preload = 'auto';
-        audio.volume = 1;
-        // Prime by attempting silent play+pause; ignore failures.
-        audio.muted = true;
-        audio.play().then(() => {
-          audio.pause();
-          audio.currentTime = 0;
-          audio.muted = false;
-        }).catch(() => {
-          audio.muted = false;
-        });
+        audio.volume = 0;
+        // Fire-and-forget — the gesture-bound .play() call is what unlocks
+        // future plays on iOS. The promise rejection here is fine.
+        const p = audio.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+        // Immediately pause synchronously inside the gesture so the unlock
+        // play doesn't actually keep advancing.
+        try { audio.pause(); audio.currentTime = 0; } catch {}
         audioPool.current[m] = audio;
       } catch {}
     });
@@ -139,6 +140,9 @@ export function LectureScreen({ topic, teacher, language, onBack }: Props) {
         audio.volume = 1;
         audioPool.current[mode] = audio;
       }
+      // Belt-and-suspenders: make sure any pending unlock play is paused
+      // before we restart from currentTime=0.
+      try { audio.pause(); } catch {}
       audio.currentTime = 0;
       audio.volume = 1;
       audioRef.current = audio;
