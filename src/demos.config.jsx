@@ -5,7 +5,14 @@ import QuizSort from './demos/quiz-sort/QuizSortScreen';
 import KickGame from './demos/kick-game/KickGameScreen';
 import TeacherEli5 from './demos/teacher-eli5/TeacherEli5Screen';
 
+// Order matters: newest demos go ON TOP.
 export const DEMOS = [
+  {
+    id: 'teacher-eli5',
+    name: 'Talking Teacher',
+    component: TeacherEli5,
+    bgColor: '#000000',
+  },
   {
     id: 'kick-game',
     name: 'Kick Game',
@@ -18,11 +25,5 @@ export const DEMOS = [
     name: 'Quiz Sort',
     component: QuizSort,
     bgColor: '#0a0a0a',
-  },
-  {
-    id: 'teacher-eli5',
-    name: 'Talking Teacher',
-    component: TeacherEli5,
-    bgColor: '#000000',
   },
 ];

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, Image } from 'react-native';
 import { DEMOS } from './demos.config';
 import { ErrorBoundary } from './ErrorBoundary';
+import knowunityLogo from './assets/knowunity-logo.png';
 
 function DemoGallery({ onSelectDemo }) {
   return (
@@ -11,6 +12,7 @@ function DemoGallery({ onSelectDemo }) {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.header}>
+        <Image source={knowunityLogo} style={styles.logo} resizeMode="contain" />
         <Text style={styles.title}>Demo Hub</Text>
         <Text style={styles.subtitle}>Tap a demo to launch</Text>
       </View>
@@ -91,6 +93,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 40,
     alignItems: 'center',
+  },
+  logo: {
+    width: 84,
+    height: 84,
+    marginBottom: 16,
   },
   title: {
     color: '#ffffff',
