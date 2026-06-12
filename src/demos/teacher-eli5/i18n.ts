@@ -73,7 +73,7 @@ export const STRINGS = {
     done: 'Fertig.',
     tapAgain: 'Tippen, um die Lektion nochmal zu hören',
     replay: '↺ nochmal',
-    explainLike5: "Erklär's wie einem Fünfjährigen",
+    explainLike5: "Erklär's für einen 5 jährigen",
   },
 } as const;
 
