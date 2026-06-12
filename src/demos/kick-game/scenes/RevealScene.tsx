@@ -35,8 +35,6 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
   const headerOp = useRef(new Animated.Value(0)).current;
   const barY = useRef(new Animated.Value(180)).current;
   const barOp = useRef(new Animated.Value(0)).current;
-  const ctaOp = useRef(new Animated.Value(0)).current;
-  const ctaY = useRef(new Animated.Value(18)).current;
 
   useEffect(() => {
     setBodyBg('#000000');
@@ -74,8 +72,6 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
         Animated.timing(headerOp, { toValue: 1, duration: 100, useNativeDriver: false }),
         Animated.timing(barY, { toValue: 0, duration: 100, easing: Easing.out(Easing.back(1.8)), useNativeDriver: false }),
         Animated.timing(barOp, { toValue: 1, duration: 100, useNativeDriver: false }),
-        Animated.timing(ctaOp, { toValue: 1, duration: 100, useNativeDriver: false }),
-        Animated.timing(ctaY, { toValue: 0, duration: 100, easing: Easing.out(Easing.back(1.8)), useNativeDriver: false }),
       ]),
     ]).start();
 
@@ -90,7 +86,7 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
     );
     bobLoop.start();
     return () => { bobLoop.stop(); clearTimeout(musicCutTimer); clearTimeout(knowieSoundTimer); clearTimeout(chatPopTimer); };
-  }, [darkBgOp, knowieY, knowieScale, knowieFace, greetOp, greetScale, headerOp, barY, barOp, ctaOp, ctaY, knowieBob]);
+  }, [darkBgOp, knowieY, knowieScale, knowieFace, greetOp, greetScale, headerOp, barY, barOp, knowieBob]);
 
   useImperativeHandle(ref, () => ({ onFlick: () => {} }));
 
@@ -133,12 +129,7 @@ const RevealScene = forwardRef<SceneHandle, SceneProps>((_props, ref) => {
           { opacity: greetOp, transform: [{ scale: greetScale }] },
         ]}
       >
-        <Text style={styles.greet}>what are we{'\n'}working on today?</Text>
-      </Animated.View>
-
-      {/* "Go study." tagline */}
-      <Animated.View style={[styles.ctaWrap, { opacity: ctaOp, transform: [{ translateY: ctaY }] }]}>
-        <Text style={styles.cta}>Go study.</Text>
+        <Text style={styles.greet}>Go study.</Text>
       </Animated.View>
 
       {/* KU AI search bar — the punchline */}
@@ -226,14 +217,6 @@ const styles = StyleSheet.create({
     letterSpacing: -0.6,
     lineHeight: 34,
   },
-
-  ctaWrap: {
-    position: 'absolute',
-    left: 0, right: 0,
-    bottom: 156,
-    alignItems: 'center',
-  },
-  cta: { fontFamily: 'Inter', fontWeight: '700', fontSize: 36, color: '#FFFFFF', letterSpacing: -0.8 },
 
   barWrap: {
     position: 'absolute',
