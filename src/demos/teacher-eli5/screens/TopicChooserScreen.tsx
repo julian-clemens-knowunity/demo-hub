@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { KU } from '../theme';
 import { TOPICS } from '../data/topics';
 import type { Topic, Language } from '../data/topics';
-import { getTeacher } from '../data/teachers';
 import { t } from '../i18n';
 
 const LANG_OPTIONS: { code: Language; label: string }[] = [
@@ -54,18 +53,25 @@ export function TopicChooserScreen({ language, onLanguageChange, onPick }: Props
       </View>
       <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
         {TOPICS.map((topic) => {
-          const teacher = getTeacher(topic.teacher);
+          const loc = topic.languages[language];
           return (
             <Pressable
               key={topic.id}
               onPress={() => onPick(topic)}
               style={({ pressed }) => [
                 styles.card,
-                { borderColor: topic.accent + '88' },
+                { borderColor: topic.accent + '55' },
                 pressed && { opacity: 0.7 },
               ]}
             >
-              <Text style={styles.cardTitle}>{s.studyWith(teacher.name)}</Text>
+              <View style={[styles.emojiWrap, { backgroundColor: topic.accent + '26' }]}>
+                <Text style={styles.emoji}>{topic.emoji}</Text>
+              </View>
+              <View style={styles.cardText}>
+                <Text style={styles.cardTitle}>{loc.title}</Text>
+                <Text style={styles.cardSub}>{loc.subtitle}</Text>
+              </View>
+              <Text style={[styles.chev, { color: topic.accent }]}>›</Text>
             </Pressable>
           );
         })}
@@ -83,8 +89,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 8,
     paddingBottom: 18,
-    // First chip starts past the hub back button on the left.
-    paddingLeft: 0,
+    // First chip starts past the hub "‹ back" chip on the left (it ends ~88px).
+    paddingLeft: 80,
     paddingRight: 22,
   },
   langChip: {
@@ -121,21 +127,36 @@ const styles = StyleSheet.create({
     lineHeight: 38,
     letterSpacing: -0.6,
   },
-  list: { paddingHorizontal: 18, paddingBottom: 48, gap: 14 },
+  list: { paddingHorizontal: 18, paddingBottom: 48, gap: 12 },
   card: {
     backgroundColor: KU.bgElevated,
-    borderRadius: 20,
-    paddingVertical: 26,
-    paddingHorizontal: 22,
+    borderRadius: 18,
+    padding: 18,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    borderWidth: 1,
+    marginBottom: 12,
+  },
+  emojiWrap: {
+    width: 56,
+    height: 56,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1.5,
-    marginBottom: 14,
   },
+  emoji: { fontSize: 30 },
+  cardText: { flex: 1, marginHorizontal: 14 },
   cardTitle: {
     color: KU.textPrimary,
-    fontSize: 22,
-    fontWeight: '800',
-    letterSpacing: -0.3,
+    fontSize: 18,
+    fontWeight: '700',
+    letterSpacing: -0.2,
   },
+  cardSub: {
+    color: KU.textSecondary,
+    fontSize: 14,
+    marginTop: 4,
+  },
+  chev: { fontSize: 26, fontWeight: '300' },
 });
