@@ -2,6 +2,7 @@
   "id": "french-revolution",
   "emoji": "🇫🇷",
   "accent": "#E84DA2",
+  "teacher": "alice",
   "languages": {
     "en": {
       "title": "The French Revolution",
@@ -20,6 +21,42 @@
       "subtitle": "Wie ein Königreich zur Republik wurde",
       "normal": "...was letztlich den Zusammenbruch des Ancien Régime und die Geburt der Volkssouveränität herbeiführte.",
       "eli5": "Okay, einfacher. Es war einmal ein König in Frankreich, der riesige Partys schmiss und Kuchen aß, während alle anderen hungerten. Die Leute wurden richtig, richtig sauer. Sie schnappten sich Mistgabeln, rissen ein großes königliches Gefängnis ein, und sagten dem König, dass er nicht mehr das Sagen hat. Danach hat Frankreich beschlossen, dass normale Leute das Land regieren sollten, nicht Könige. Und deshalb wählen wir heute."
+    },
+    "es": {
+      "title": "La Revolución Francesa",
+      "subtitle": "Cómo un reino se convirtió en república",
+      "normal": "...lo cual finalmente catalizó la disolución del ancien régime y el nacimiento de la soberanía popular.",
+      "eli5": "Vale, más simple. Érase una vez un rey en Francia que daba fiestas elegantes y comía pasteles mientras los demás pasaban hambre. La gente se enfadó muchísimo. Cogieron horcas, derribaron una gran prisión real, y le dijeron al rey que ya no mandaba. Después, Francia decidió que la gente normal debería gobernar el país, no los reyes. Y por eso votamos hoy."
+    },
+    "fr": {
+      "title": "La Révolution française",
+      "subtitle": "Comment un royaume est devenu une république",
+      "normal": "...ce qui a finalement catalysé la dissolution de l'ancien régime et l'avènement de la souveraineté populaire.",
+      "eli5": "Bon, plus simple. Il était une fois un roi en France qui faisait des fêtes chics et mangeait des gâteaux pendant que tout le monde crevait de faim. Les gens se sont vraiment, vraiment énervés. Ils ont pris des fourches, abattu une grande prison royale, et dit au roi qu'il ne commandait plus. Après ça, la France a décidé que les gens normaux devraient diriger le pays, pas les rois. Et c'est pour ça qu'on vote aujourd'hui."
+    },
+    "it": {
+      "title": "La Rivoluzione Francese",
+      "subtitle": "Come un regno è diventato una repubblica",
+      "normal": "...che ha alla fine catalizzato la dissoluzione dell'ancien régime e la nascita della sovranità popolare.",
+      "eli5": "Ok, più semplice. C'era una volta un re in Francia che faceva feste eleganti e mangiava torte mentre tutti gli altri morivano di fame. La gente si è incazzata davvero, davvero forte. Hanno preso i forconi, abbattuto una grande prigione reale, e detto al re che non comandava più. Dopo, la Francia ha deciso che la gente normale doveva governare il paese, non i re. Ed è per questo che oggi votiamo."
+    },
+    "tr": {
+      "title": "Fransız Devrimi",
+      "subtitle": "Bir krallık nasıl cumhuriyete dönüştü",
+      "normal": "...bu da nihayetinde ancien régime'in çöküşünü ve halk egemenliğinin doğuşunu tetikledi.",
+      "eli5": "Tamam, daha basit. Bir zamanlar Fransa'da bir kral varmış, gösterişli partiler verir ve pasta yermiş, bu sırada herkes açmış. İnsanlar gerçekten, gerçekten sinirlenmişler. Yabaları kapıp büyük bir kraliyet hapishanesini yıkmışlar, ve krala artık yönetmediğini söylemişler. Sonra Fransa, kralların değil sıradan insanların ülkeyi yönetmesi gerektiğine karar vermiş. Bugün oy verdiğimizin sebebi de bu."
+    },
+    "nl": {
+      "title": "De Franse Revolutie",
+      "subtitle": "Hoe een koninkrijk een republiek werd",
+      "normal": "...wat uiteindelijk de ontbinding van het ancien régime en de geboorte van de volkssoevereiniteit teweegbracht.",
+      "eli5": "Oké, simpeler. Er was eens een koning in Frankrijk die chique feesten gaf en taart at terwijl iedereen honger had. De mensen werden echt, echt boos. Ze pakten hooivorken, sloegen een grote koninklijke gevangenis omver, en zeiden tegen de koning dat hij niet meer de baas was. Daarna besloot Frankrijk dat gewone mensen het land moesten besturen, geen koningen. En daarom stemmen we vandaag."
+    },
+    "pt": {
+      "title": "A Revolução Francesa",
+      "subtitle": "Como um reino virou república",
+      "normal": "...o que acabou catalisando a dissolução do ancien régime e o nascimento da soberania popular.",
+      "eli5": "Tá bom, mais simples. Era uma vez um rei na França que dava festas chiques e comia bolo enquanto todo mundo passava fome. As pessoas ficaram muito, muito bravas. Pegaram forcados, derrubaram uma grande prisão real, e disseram ao rei que ele não mandava mais. Depois disso, a França decidiu que pessoas comuns deviam governar o país, não reis. E é por isso que votamos hoje."
     }
   }
 }

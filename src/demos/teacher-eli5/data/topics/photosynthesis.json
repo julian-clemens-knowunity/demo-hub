@@ -2,6 +2,7 @@
   "id": "photosynthesis",
   "emoji": "🌿",
   "accent": "#00C950",
+  "teacher": "bill",
   "languages": {
     "en": {
       "title": "Photosynthesis",
@@ -20,6 +21,42 @@
       "subtitle": "Wie Pflanzen Sonnenlicht essen",
       "normal": "...und die entstandene Glukose wird über das Phloem in die nicht-photosynthetisch aktiven Gewebe transportiert.",
       "eli5": "Okay, so als wärst du fünf. Pflanzen essen Sonnenlicht. Ihre Blätter fangen die Sonne, schlürfen Wasser aus dem Boden, und atmen Luft ein. Dann mischen sie alles in sich zusammen und machen daraus Essen. Und das Coole? Sie geben uns frische Luft zum Atmen zurück. Ziemlich guter Deal, oder?"
+    },
+    "es": {
+      "title": "Fotosíntesis",
+      "subtitle": "Cómo las plantas comen luz del sol",
+      "normal": "...y así la glucosa resultante es transportada a través del floema hacia los tejidos no fotosintéticos.",
+      "eli5": "Vale, como si tuvieras cinco años. Las plantas comen luz del sol. Sus hojas atrapan el sol, beben un poquito de agua de la tierra, y respiran aire. Luego mezclan todo dentro de sí mismas y lo convierten en comida. ¿Y lo mejor? Nos devuelven aire fresco para respirar. Buen trato, ¿no?"
+    },
+    "fr": {
+      "title": "La Photosynthèse",
+      "subtitle": "Comment les plantes mangent le soleil",
+      "normal": "...et le glucose résultant est transporté via le phloème vers les tissus non photosynthétiques.",
+      "eli5": "Bon, comme si t'avais cinq ans. Les plantes mangent le soleil. Leurs feuilles attrapent la lumière, sirotent un peu d'eau du sol, et respirent l'air. Ensuite elles mélangent tout à l'intérieur d'elles-mêmes et transforment ça en nourriture. Et le plus cool? Elles nous redonnent de l'air frais à respirer. Pas mal comme deal, non?"
+    },
+    "it": {
+      "title": "La Fotosintesi",
+      "subtitle": "Come le piante mangiano la luce",
+      "normal": "...e quindi il glucosio risultante viene trasportato attraverso il floema verso i tessuti non fotosintetici.",
+      "eli5": "Ok, come se avessi cinque anni. Le piante mangiano la luce del sole. Le loro foglie catturano il sole, bevono un po' d'acqua dal terreno, e respirano l'aria. Poi mescolano tutto dentro di sé e lo trasformano in cibo. E la cosa più figa? Ci restituiscono aria fresca da respirare. Niente male, eh?"
+    },
+    "tr": {
+      "title": "Fotosentez",
+      "subtitle": "Bitkiler güneşi nasıl yer",
+      "normal": "...ve sonuçta oluşan glikoz floem aracılığıyla fotosentez yapmayan dokulara taşınır.",
+      "eli5": "Tamam, sanki beş yaşındaymışsın gibi. Bitkiler güneş ışığını yer. Yaprakları güneşi yakalar, topraktan biraz su içer, ve havayı solur. Sonra hepsini içlerinde karıştırıp yemeğe dönüştürürler. Ve en iyi yanı? Bize nefes alacağımız taze hava geri verirler. Fena anlaşma değil, ha?"
+    },
+    "nl": {
+      "title": "Fotosynthese",
+      "subtitle": "Hoe planten zonlicht eten",
+      "normal": "...en zo wordt de resulterende glucose via het floëem getransporteerd naar de niet-fotosynthetische weefsels.",
+      "eli5": "Oké, alsof je vijf bent. Planten eten zonlicht. Hun bladeren vangen de zon, nippen wat water uit de grond, en ademen lucht in. Dan mengen ze alles binnenin en maken er voedsel van. En het coolste? Ze geven ons frisse lucht om te ademen. Niet slecht, toch?"
+    },
+    "pt": {
+      "title": "Fotossíntese",
+      "subtitle": "Como as plantas comem luz do sol",
+      "normal": "...e assim a glicose resultante é transportada pelo floema até os tecidos não fotossintéticos.",
+      "eli5": "Tá bom, como se você tivesse cinco anos. As plantas comem luz do sol. As folhas pegam o sol, bebem um pouco de água do chão, e respiram o ar. Aí misturam tudo dentro de si mesmas e transformam em comida. E o mais legal? Devolvem ar fresco pra gente respirar. Bom negócio, né?"
     }
   }
 }

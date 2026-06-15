@@ -2,7 +2,33 @@
 
 import type { Language } from './data/topics';
 
-export const STRINGS = {
+type Strings = {
+  pickLessonEyebrow: string;
+  pickLessonTitle: string;
+  pickLessonSub: string;
+  whosTeaching: string;
+  pickTeacherSub: string;
+  backTopics: string;
+  readyWhen: string;
+  tapToStart: string;
+  teaching: (name: string) => string;
+  listenThenAsk: string;
+  imListening: string;
+  sayLike: string;
+  iHearYou: string;
+  stopWhenDone: string;
+  gotIt: string;
+  oneSec: string;
+  reexplaining: (name: string) => string;
+  likeFive: string;
+  done: string;
+  tapAgain: string;
+  replay: string;
+  letMeSpeak: string;
+  studyWith: (name: string) => string;
+};
+
+export const STRINGS: Record<Language, Strings> = {
   en: {
     pickLessonEyebrow: 'PICK A LESSON',
     pickLessonTitle: 'Talk to a teacher.\nAsk anything.',
@@ -12,7 +38,7 @@ export const STRINGS = {
     backTopics: '‹ topics',
     readyWhen: 'Ready when you are',
     tapToStart: 'Tap to start the lesson',
-    teaching: (name: string) => `${name} is teaching…`,
+    teaching: (name) => `${name} is teaching…`,
     listenThenAsk: 'Listen, then ask anything when it ends',
     imListening: "I'm listening…",
     sayLike: 'Say something like "explain it like I\'m 5"',
@@ -20,13 +46,13 @@ export const STRINGS = {
     stopWhenDone: "Stop talking when you're done",
     gotIt: 'Got it…',
     oneSec: 'One sec',
-    reexplaining: (name: string) => `${name} is re-explaining…`,
+    reexplaining: (name) => `${name} is re-explaining…`,
     likeFive: "Like you're five years old",
     done: 'Done.',
     tapAgain: 'Tap to hear the lesson again',
     replay: '↺ replay',
     letMeSpeak: 'Let me speak now',
-    studyWith: (name: string) => `Study with ${name}`,
+    studyWith: (name) => `Study with ${name}`,
   },
   pl: {
     pickLessonEyebrow: 'WYBIERZ LEKCJĘ',
@@ -37,7 +63,7 @@ export const STRINGS = {
     backTopics: '‹ tematy',
     readyWhen: 'Gotów, kiedy chcesz',
     tapToStart: 'Stuknij, aby rozpocząć',
-    teaching: (name: string) => `${name} wykłada…`,
+    teaching: (name) => `${name} wykłada…`,
     listenThenAsk: 'Posłuchaj, a potem zadaj pytanie',
     imListening: 'Słucham…',
     sayLike: 'Powiedz coś, np. „wyjaśnij to jak pięciolatkowi"',
@@ -45,13 +71,13 @@ export const STRINGS = {
     stopWhenDone: 'Przestań mówić, gdy skończysz',
     gotIt: 'Już rozumiem…',
     oneSec: 'Sekundkę',
-    reexplaining: (name: string) => `${name} tłumaczy jeszcze raz…`,
+    reexplaining: (name) => `${name} tłumaczy jeszcze raz…`,
     likeFive: 'Tak, jakbyś miał pięć lat',
     done: 'Skończone.',
     tapAgain: 'Stuknij, aby usłyszeć lekcję ponownie',
     replay: '↺ powtórz',
     letMeSpeak: 'Daj mi powiedzieć',
-    studyWith: (name: string) => `Ucz się z ${name}`,
+    studyWith: (name) => `Ucz się z ${name}`,
   },
   de: {
     pickLessonEyebrow: 'WÄHLE EINE LEKTION',
@@ -62,7 +88,7 @@ export const STRINGS = {
     backTopics: '‹ Themen',
     readyWhen: 'Bereit, wenn du es bist',
     tapToStart: 'Tippen, um zu starten',
-    teaching: (name: string) => `${name} unterrichtet…`,
+    teaching: (name) => `${name} unterrichtet…`,
     listenThenAsk: 'Hör zu — und frag was, wenn es vorbei ist',
     imListening: 'Ich höre zu…',
     sayLike: 'Sag z. B. „erklär\'s wie einem Fünfjährigen"',
@@ -70,15 +96,165 @@ export const STRINGS = {
     stopWhenDone: 'Hör auf zu reden, wenn du fertig bist',
     gotIt: 'Verstanden…',
     oneSec: 'Eine Sekunde',
-    reexplaining: (name: string) => `${name} erklärt es nochmal…`,
+    reexplaining: (name) => `${name} erklärt es nochmal…`,
     likeFive: 'Als wärst du fünf Jahre alt',
     done: 'Fertig.',
     tapAgain: 'Tippen, um die Lektion nochmal zu hören',
     replay: '↺ nochmal',
     letMeSpeak: 'Lass mich jetzt reden',
-    studyWith: (name: string) => `Lerne mit ${name}`,
+    studyWith: (name) => `Lerne mit ${name}`,
   },
-} as const;
+  es: {
+    pickLessonEyebrow: 'ELIGE UNA LECCIÓN',
+    pickLessonTitle: 'Habla con un profe.\nPregunta lo que quieras.',
+    pickLessonSub: 'Cuando el profe termine, di lo que quieras — te lo explicará otra vez.',
+    whosTeaching: 'QUIÉN ENSEÑA',
+    pickTeacherSub: 'Elige una voz.',
+    backTopics: '‹ temas',
+    readyWhen: 'Listo cuando tú',
+    tapToStart: 'Toca para empezar',
+    teaching: (name) => `${name} está enseñando…`,
+    listenThenAsk: 'Escucha y pregunta cuando termine',
+    imListening: 'Te escucho…',
+    sayLike: 'Di algo como "explícamelo como si tuviera 5"',
+    iHearYou: 'Te oigo…',
+    stopWhenDone: 'Para de hablar cuando termines',
+    gotIt: 'Entendido…',
+    oneSec: 'Un segundo',
+    reexplaining: (name) => `${name} lo explica otra vez…`,
+    likeFive: 'Como si tuvieras cinco años',
+    done: 'Listo.',
+    tapAgain: 'Toca para escuchar otra vez',
+    replay: '↺ otra vez',
+    letMeSpeak: 'Déjame hablar ahora',
+    studyWith: (name) => `Estudia con ${name}`,
+  },
+  fr: {
+    pickLessonEyebrow: 'CHOISIS UNE LEÇON',
+    pickLessonTitle: 'Parle à un prof.\nDemande ce que tu veux.',
+    pickLessonSub: 'Quand le prof termine, dis ce que tu veux — il te ré-expliquera.',
+    whosTeaching: 'QUI ENSEIGNE',
+    pickTeacherSub: 'Choisis une voix.',
+    backTopics: '‹ sujets',
+    readyWhen: 'Prêt quand tu veux',
+    tapToStart: 'Touche pour commencer',
+    teaching: (name) => `${name} enseigne…`,
+    listenThenAsk: 'Écoute et demande quand ça se termine',
+    imListening: "J'écoute…",
+    sayLike: 'Dis quelque chose comme "explique-moi comme si j\'avais 5 ans"',
+    iHearYou: "Je t'entends…",
+    stopWhenDone: "Arrête de parler quand t'as fini",
+    gotIt: 'Compris…',
+    oneSec: 'Une seconde',
+    reexplaining: (name) => `${name} ré-explique…`,
+    likeFive: "Comme si t'avais cinq ans",
+    done: 'Fini.',
+    tapAgain: 'Touche pour écouter encore',
+    replay: '↺ encore',
+    letMeSpeak: 'Laisse-moi parler maintenant',
+    studyWith: (name) => `Étudie avec ${name}`,
+  },
+  it: {
+    pickLessonEyebrow: 'SCEGLI UNA LEZIONE',
+    pickLessonTitle: 'Parla con un prof.\nChiedi qualsiasi cosa.',
+    pickLessonSub: 'Quando il prof finisce, di\' quello che vuoi — te lo rispiega.',
+    whosTeaching: 'CHI INSEGNA',
+    pickTeacherSub: 'Scegli una voce.',
+    backTopics: '‹ argomenti',
+    readyWhen: 'Pronto quando vuoi',
+    tapToStart: 'Tocca per iniziare',
+    teaching: (name) => `${name} sta insegnando…`,
+    listenThenAsk: 'Ascolta e poi chiedi quando finisce',
+    imListening: 'Ti ascolto…',
+    sayLike: 'Di\' qualcosa tipo "spiegamelo come se avessi 5 anni"',
+    iHearYou: 'Ti sento…',
+    stopWhenDone: 'Smetti di parlare quando hai finito',
+    gotIt: 'Capito…',
+    oneSec: 'Un secondo',
+    reexplaining: (name) => `${name} rispiega…`,
+    likeFive: 'Come se avessi cinque anni',
+    done: 'Fatto.',
+    tapAgain: 'Tocca per riascoltare',
+    replay: '↺ di nuovo',
+    letMeSpeak: 'Fammi parlare ora',
+    studyWith: (name) => `Studia con ${name}`,
+  },
+  tr: {
+    pickLessonEyebrow: 'BİR DERS SEÇ',
+    pickLessonTitle: 'Bir öğretmenle konuş.\nNe istersen sor.',
+    pickLessonSub: 'Öğretmen bitirdiğinde, ne istersen söyle — sana tekrar anlatacak.',
+    whosTeaching: 'KİM ANLATIYOR',
+    pickTeacherSub: 'Bir ses seç.',
+    backTopics: '‹ konular',
+    readyWhen: 'Hazırsan ben hazırım',
+    tapToStart: 'Başlamak için dokun',
+    teaching: (name) => `${name} ders veriyor…`,
+    listenThenAsk: 'Dinle, bitince istediğini sor',
+    imListening: 'Dinliyorum…',
+    sayLike: 'Mesela "bana 5 yaşındaymışım gibi anlat" de',
+    iHearYou: 'Seni duyuyorum…',
+    stopWhenDone: 'Bittiğinde konuşmayı bırak',
+    gotIt: 'Anladım…',
+    oneSec: 'Bir saniye',
+    reexplaining: (name) => `${name} tekrar anlatıyor…`,
+    likeFive: 'Sanki beş yaşındaymışsın gibi',
+    done: 'Tamam.',
+    tapAgain: 'Dersi tekrar duymak için dokun',
+    replay: '↺ tekrar',
+    letMeSpeak: 'Şimdi konuşmama izin ver',
+    studyWith: (name) => `${name} ile çalış`,
+  },
+  nl: {
+    pickLessonEyebrow: 'KIES EEN LES',
+    pickLessonTitle: 'Praat met een leraar.\nVraag wat je wilt.',
+    pickLessonSub: 'Als de leraar klaar is, zeg wat je wilt — hij legt het opnieuw uit.',
+    whosTeaching: 'WIE GEEFT LES',
+    pickTeacherSub: 'Kies een stem.',
+    backTopics: '‹ onderwerpen',
+    readyWhen: 'Klaar als jij dat bent',
+    tapToStart: 'Tik om te starten',
+    teaching: (name) => `${name} geeft les…`,
+    listenThenAsk: 'Luister, vraag wat als het klaar is',
+    imListening: 'Ik luister…',
+    sayLike: 'Zeg iets als "leg het uit alsof ik vijf ben"',
+    iHearYou: 'Ik hoor je…',
+    stopWhenDone: 'Stop met praten als je klaar bent',
+    gotIt: 'Begrepen…',
+    oneSec: 'Eén seconde',
+    reexplaining: (name) => `${name} legt het opnieuw uit…`,
+    likeFive: 'Alsof je vijf jaar oud bent',
+    done: 'Klaar.',
+    tapAgain: 'Tik om de les opnieuw te horen',
+    replay: '↺ opnieuw',
+    letMeSpeak: 'Laat me nu praten',
+    studyWith: (name) => `Studeer met ${name}`,
+  },
+  pt: {
+    pickLessonEyebrow: 'ESCOLHA UMA LIÇÃO',
+    pickLessonTitle: 'Converse com um professor.\nPergunte o que quiser.',
+    pickLessonSub: 'Quando o professor terminar, diga o que quiser — ele explica de novo.',
+    whosTeaching: 'QUEM ENSINA',
+    pickTeacherSub: 'Escolha uma voz.',
+    backTopics: '‹ tópicos',
+    readyWhen: 'Pronto quando você estiver',
+    tapToStart: 'Toque para começar',
+    teaching: (name) => `${name} está ensinando…`,
+    listenThenAsk: 'Escute e pergunte quando terminar',
+    imListening: 'Te escutando…',
+    sayLike: 'Diga algo tipo "explica como se eu tivesse 5 anos"',
+    iHearYou: 'Te ouço…',
+    stopWhenDone: 'Pare de falar quando terminar',
+    gotIt: 'Entendi…',
+    oneSec: 'Um segundo',
+    reexplaining: (name) => `${name} explica de novo…`,
+    likeFive: 'Como se você tivesse cinco anos',
+    done: 'Pronto.',
+    tapAgain: 'Toque para ouvir de novo',
+    replay: '↺ de novo',
+    letMeSpeak: 'Me deixa falar agora',
+    studyWith: (name) => `Estude com ${name}`,
+  },
+};
 
 export function t(lang: Language) {
   return STRINGS[lang];

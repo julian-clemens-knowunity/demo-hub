@@ -2,6 +2,7 @@
   "id": "black-holes",
   "emoji": "🕳️",
   "accent": "#2B7FFF",
+  "teacher": "alice",
   "languages": {
     "en": {
       "title": "Black Holes",
@@ -20,6 +21,42 @@
       "subtitle": "Der Punkt ohne Wiederkehr",
       "normal": "...was bedeutet, dass nach Überschreiten des Schwarzschild-Radius selbst Licht keine Fluchtgeschwindigkeit mehr erreichen kann.",
       "eli5": "Okay, einfacher Modus. Stell dir einen wirklich großen Badewannenabfluss im Weltall vor. Wenn etwas zu nah kommt, fällt es rein und kommt nie wieder raus. Nicht deine Socke, nicht Licht, nicht mal die Zeit selbst. Der Abfluss ist unsichtbar. Aber du kannst die Sachen sehen, die sich um ihn drehen, bevor sie reingezogen werden. Und die größten leben in der Mitte von Galaxien. Sie sind sehr, sehr hungrig."
+    },
+    "es": {
+      "title": "Agujeros Negros",
+      "subtitle": "El punto sin retorno",
+      "normal": "...lo que significa que una vez superado el radio de Schwarzschild, ni siquiera la luz puede alcanzar la velocidad de escape.",
+      "eli5": "Vale, modo fácil. Imagina un desagüe de bañera muy grande en el espacio. Si algo se acerca demasiado, cae dentro y nunca vuelve. Ni tu calcetín, ni la luz, ni siquiera el tiempo mismo. El desagüe es invisible. Pero puedes ver las cosas girando alrededor antes de ser absorbidas. Y los más grandes viven en el centro de las galaxias. Tienen mucha, mucha hambre."
+    },
+    "fr": {
+      "title": "Les Trous Noirs",
+      "subtitle": "Le point de non-retour",
+      "normal": "...ce qui veut dire qu'une fois le rayon de Schwarzschild franchi, même la lumière ne peut plus atteindre la vitesse de libération.",
+      "eli5": "Bon, mode facile. Imagine une énorme bonde de baignoire dans l'espace. Si quelque chose s'approche trop, ça tombe dedans et ça ne revient jamais. Ni ta chaussette, ni la lumière, ni même le temps lui-même. La bonde est invisible. Mais tu peux voir les choses tourner autour avant d'être aspirées. Et les plus gros vivent au milieu des galaxies. Ils ont très, très faim."
+    },
+    "it": {
+      "title": "I Buchi Neri",
+      "subtitle": "Il punto di non ritorno",
+      "normal": "...il che significa che una volta superato il raggio di Schwarzschild, nemmeno la luce può raggiungere la velocità di fuga.",
+      "eli5": "Ok, modalità facile. Immagina uno scarico della vasca da bagno enorme nello spazio. Se qualcosa si avvicina troppo, ci cade dentro e non torna più. Né il tuo calzino, né la luce, né nemmeno il tempo stesso. Lo scarico è invisibile. Ma puoi vedere le cose che ruotano attorno prima di essere risucchiate. E i più grandi vivono al centro delle galassie. Hanno molta, molta fame."
+    },
+    "tr": {
+      "title": "Kara Delikler",
+      "subtitle": "Dönüşü olmayan nokta",
+      "normal": "...bu da bir nesne Schwarzschild yarıçapını aştığında, ışığın bile kaçış hızına ulaşamayacağı anlamına gelir.",
+      "eli5": "Tamam, kolay mod. Uzayda gerçekten büyük bir küvet giderini hayal et. Bir şey çok yaklaşırsa, içine düşer ve bir daha geri gelmez. Ne çorabın, ne ışık, ne de zamanın kendisi. Gider görünmez. Ama içine çekilmeden önce etrafında dönen şeyleri görebilirsin. Ve en büyükleri galaksilerin ortasında yaşar. Çok, çok açlar."
+    },
+    "nl": {
+      "title": "Zwarte Gaten",
+      "subtitle": "Het punt van geen terugkeer",
+      "normal": "...wat betekent dat zodra de Schwarzschild-straal wordt overschreden, zelfs licht de ontsnappingssnelheid niet meer kan halen.",
+      "eli5": "Oké, makkelijke modus. Stel je een gigantische badafvoer voor in de ruimte. Als iets te dichtbij komt, valt het erin en komt het nooit meer terug. Niet je sok, niet licht, zelfs de tijd zelf niet. De afvoer is onzichtbaar. Maar je kunt dingen er omheen zien draaien voordat ze worden opgezogen. En de grootste leven midden in de sterrenstelsels. Ze hebben heel, heel veel honger."
+    },
+    "pt": {
+      "title": "Buracos Negros",
+      "subtitle": "O ponto sem volta",
+      "normal": "...o que significa que depois de cruzar o raio de Schwarzschild, nem a luz consegue alcançar a velocidade de escape.",
+      "eli5": "Tá bom, modo fácil. Imagina um ralo de banheira gigante no espaço. Se alguma coisa chega perto demais, cai dentro e nunca mais volta. Nem sua meia, nem a luz, nem o próprio tempo. O ralo é invisível. Mas dá pra ver as coisas girando em volta antes de serem puxadas. E os maiores vivem no meio das galáxias. Eles têm muita, muita fome."
     }
   }
 }

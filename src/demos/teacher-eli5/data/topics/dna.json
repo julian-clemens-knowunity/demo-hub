@@ -2,6 +2,7 @@
   "id": "dna",
   "emoji": "🧬",
   "accent": "#8E51FF",
+  "teacher": "bill",
   "languages": {
     "en": {
       "title": "DNA",
@@ -20,6 +21,42 @@
       "subtitle": "Die Bauanleitung deines Körpers",
       "normal": "...und die antiparallelen Stränge der Doppelhelix entwinden sich während der semikonservativen Replikation.",
       "eli5": "Okay, Fünfjährigen-Version. Stell dir vor, dein Körper ist aus winzigen LEGO-Steinen gebaut. DNA ist die Anleitung, die in der Schachtel lag. Sie sagt deinen Steinen, wie sie Haare, Augen, und Zehen machen sollen. Die Hälfte der Anleitung kommt von deiner Mama, die andere Hälfte von deinem Papa. Deshalb siehst du ein bisschen aus wie beide. Ziemlich cool, oder?"
+    },
+    "es": {
+      "title": "ADN",
+      "subtitle": "El manual de instrucciones de tu cuerpo",
+      "normal": "...y así las cadenas antiparalelas de la doble hélice se desenrollan durante la replicación semiconservativa.",
+      "eli5": "Vale, versión para un niño de cinco años. Imagina que tu cuerpo está hecho de pequeños bloques de LEGO. El ADN es el manual de instrucciones que venía en la caja. Le dice a tus bloques cómo hacer pelo, ojos, y dedos del pie. La mitad del manual viene de tu mamá, y la otra mitad de tu papá. Por eso te pareces un poco a los dos. Bastante guay, ¿no?"
+    },
+    "fr": {
+      "title": "L'ADN",
+      "subtitle": "Le manuel d'instructions de ton corps",
+      "normal": "...et les brins antiparallèles de la double hélice se déroulent pendant la réplication semi-conservative.",
+      "eli5": "Bon, version pour un gamin de cinq ans. Imagine que ton corps est fait de petits blocs LEGO. L'ADN c'est le manuel d'instructions qui était dans la boîte. Il dit à tes blocs comment faire les cheveux, les yeux, et les orteils. La moitié du manuel vient de ta maman, et l'autre moitié de ton papa. C'est pour ça que tu ressembles un peu aux deux. Plutôt cool, non?"
+    },
+    "it": {
+      "title": "Il DNA",
+      "subtitle": "Il libretto di istruzioni del tuo corpo",
+      "normal": "...e i filamenti antiparalleli della doppia elica si svolgono durante la replicazione semiconservativa.",
+      "eli5": "Ok, versione per un bambino di cinque anni. Immagina che il tuo corpo sia costruito con piccoli mattoncini LEGO. Il DNA è il libretto di istruzioni che era nella scatola. Dice ai tuoi mattoncini come fare capelli, occhi, e dita dei piedi. Metà del libretto viene dalla tua mamma, l'altra metà dal tuo papà. Ecco perché assomigli un po' a entrambi. Forte, eh?"
+    },
+    "tr": {
+      "title": "DNA",
+      "subtitle": "Vücudunun kullanım kılavuzu",
+      "normal": "...ve çift sarmalın antiparalel iplikleri yarı-korunumlu replikasyon sırasında çözülür.",
+      "eli5": "Tamam, beş yaşındaki bir çocuğa nasıl anlatılır. Vücudunun küçük LEGO bloklarından yapıldığını düşün. DNA, kutuyla birlikte gelen kullanım kılavuzu. Bloklarına saç, göz, ve ayak parmaklarının nasıl yapılacağını söylüyor. Kılavuzun yarısı annenden, diğer yarısı babandan geliyor. İşte bu yüzden ikisine de biraz benziyorsun. Bayağı havalı, değil mi?"
+    },
+    "nl": {
+      "title": "DNA",
+      "subtitle": "De handleiding van je lichaam",
+      "normal": "...en de antiparallelle strengen van de dubbele helix ontwarren tijdens semi-conservatieve replicatie.",
+      "eli5": "Oké, versie voor een vijfjarige. Stel je voor dat je lichaam is opgebouwd uit kleine LEGO-blokjes. DNA is het instructieboekje dat in de doos zat. Het vertelt je blokjes hoe ze haar, ogen, en tenen moeten maken. De helft van het boekje komt van je moeder, de andere helft van je vader. Daarom lijk je een beetje op allebei. Best cool, hè?"
+    },
+    "pt": {
+      "title": "DNA",
+      "subtitle": "O manual de instruções do teu corpo",
+      "normal": "...e as cadeias antiparalelas da dupla hélice se desenrolam durante a replicação semiconservativa.",
+      "eli5": "Tá bom, versão pra criança de cinco anos. Imagina que seu corpo é construído com pecinhas de LEGO. O DNA é o manual de instruções que veio na caixa. Ele diz pras suas peças como fazer cabelo, olhos, e dedos do pé. Metade do manual veio da sua mãe, a outra metade do seu pai. Por isso você se parece um pouquinho com os dois. Bem legal, né?"
     }
   }
 }
