@@ -76,11 +76,16 @@ export function TopicChooserScreen({ language, onLanguageChange, onPick }: Props
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: KU.bg },
-  header: { paddingHorizontal: 22, paddingTop: 6, paddingBottom: 20 },
+  // Push the whole header down past the hub's "‹ back" chip (top:50)
+  // so the language scroller doesn't sit underneath it.
+  header: { paddingHorizontal: 22, paddingTop: 48, paddingBottom: 20 },
   langRow: {
     flexDirection: 'row',
     gap: 8,
     paddingBottom: 18,
+    // First chip starts past the hub back button on the left.
+    paddingLeft: 0,
+    paddingRight: 22,
   },
   langChip: {
     paddingHorizontal: 14,
